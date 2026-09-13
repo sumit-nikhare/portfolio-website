@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Contact me — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="Contact Sumit Nikhare, Product Designer in Pune, about products, roles, and collaborations. Email, phone, LinkedIn, and a local email-draft builder."
+    />
+    <meta property="og:title" content="Contact me — Sumit Nikhare" />
+    <meta
+      property="og:description"
+      content="Contact Sumit Nikhare, Product Designer in Pune, about products, roles, and collaborations. Email, phone, LinkedIn, and a local email-draft builder."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="contact">
+    <!-- include:header -->
+    <main id="main">
+      <!-- EDIT PAGE CONTENT: text and images are kept in the HTML sections below. See README.md for the editing guide. -->
+      <section class="inner-hero shell contact-page-hero">
+        <span class="eyebrow"
+          ><span class="section-number">CONTACT /</span>GOOD THINGS BEGIN WITH
+          HELLO</span
+        >
+        <h1 data-page-title>
+          Let’s make <br /><span class="outline-word">something</span>
+          <br /><span class="lime">matter.</span>
+        </h1>
+        <div class="contact-orbit" aria-hidden="true">
+          <span>✳</span><b>A LITTLE HELLO. <br />A LOT OF POSSIBILITY.</b>
+        </div>
+        <p class="hero-lead">
+          A new product. A thoughtful team. <br />An interesting conversation.
+        </p>
+      </section>
+      <section
+        class="shell contact-page-body"
+        aria-labelledby="contact-form-title"
+      >
+        <div class="contact-side">
+          <span class="eyebrow">01 / START A CONVERSATION</span>
+          <h2 id="contact-form-title">What are <br />you thinking?</h2>
+          <p>A few useful details are enough to get started.</p>
+          <div class="contact-method">
+            <span class="eyebrow">DIRECT EMAIL</span>{{contact-link}}
+          </div>
+          <div class="contact-method">
+            <span class="eyebrow">LINKEDIN</span>{{linkedin-link}}
+          </div>
+          <div class="contact-method">
+            <span class="eyebrow">PHONE</span
+            ><a class="text-link" href="tel:+917774878975"
+              >+91 77748 78975 <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="contact-note">
+            <span aria-hidden="true">↗</span>
+            <p>
+              Based in Pune, India. Share a product challenge, a role, or a
+              collaboration idea. A little context makes a good starting point.
+            </p>
+          </div>
+        </div>
+        <div class="contact-form-panel">
+          <p class="form-intro" id="contact-form-help">{{contact-mode-note}}</p>
+          <form
+            data-contact-form
+            data-recipient="{{contact-email}}"
+            class="contact-form js-only"
+            hidden
+            aria-describedby="contact-form-help"
+          >
+            <div class="form-two">
+              <label for="contact-name"
+                >Your name <span>(required)</span
+                ><input
+                  id="contact-name"
+                  name="name"
+                  autocomplete="name"
+                  maxlength="100"
+                  required
+                  placeholder="How should I call you?" /></label
+              ><label for="contact-email"
+                >Email address <span>(required)</span
+                ><input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  maxlength="254"
+                  required
+                  placeholder="you@example.com"
+              /></label>
+            </div>
+            <fieldset>
+              <legend>I’m here about <span>(optional)</span></legend>
+              <div class="intent-options">
+                <label
+                  ><input
+                    type="radio"
+                    name="intent"
+                    value="A project"
+                    checked
+                  /><span>A project</span></label
+                ><label
+                  ><input type="radio" name="intent" value="A role" /><span
+                    >A role</span
+                  ></label
+                ><label
+                  ><input
+                    type="radio"
+                    name="intent"
+                    value="A conversation"
+                  /><span>A conversation</span></label
+                >
+              </div>
+            </fieldset>
+            <label for="contact-message"
+              >A little context <span>(required · at least 20 characters)</span
+              ><textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                minlength="20"
+                maxlength="2000"
+                required
+                placeholder="What are you working on? Where could design help?"
+              ></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="pill-button" type="submit">
+                Prepare message <span aria-hidden="true">↗</span></button
+              ><button class="text-link" type="reset">Clear form</button>
+            </div>
+            <p class="form-privacy">
+              Your draft stays in this page. Nothing is sent or saved
+              automatically.
+            </p>
+          </form>
+          <p class="no-js-only">
+            The message builder needs JavaScript. You can email me directly at
+            sumit.v.nikhare@gmail.com.
+          </p>
+          <section
+            class="message-preview"
+            data-message-preview
+            hidden
+            aria-labelledby="message-preview-title"
+          >
+            <h3 id="message-preview-title" tabindex="-1">
+              Your message is ready to review.
+            </h3>
+            <p data-message-status aria-live="polite"></p>
+            <pre data-message-text></pre>
+            <div class="inline-actions">
+              <button class="pill-button" type="button" data-copy-message>
+                Copy message</button
+              ><a class="text-link" data-send-email hidden
+                >Open email draft <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <p class="content-note" data-copy-status aria-live="polite"></p>
+          </section>
+        </div>
+      </section>
+      <section
+        class="shell editorial-section contact-faq"
+        aria-labelledby="contact-faq-title"
+      >
+        <span class="eyebrow"
+          ><span class="section-number">02 /</span>A LITTLE MORE CONTEXT</span
+        >
+        <h2 id="contact-faq-title">Before we say hello.</h2>
+        <div class="faq-list">
+          <details>
+            <summary>
+              What should a project message include?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <p>
+              A short description of the product, the problem you want to solve,
+              your timeline, and any constraints you already know. A finished
+              brief is optional.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What if I’m hiring?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Share the role, the team, and what you would like the designer to
+              help with. My résumé covers public-health platforms, mobile and
+              web UX, design systems, and developer collaboration.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Does this form send my message?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              It prepares a message for you to review and copy. Choose “Open
+              email draft” to address it to sumit.v.nikhare@gmail.com in your
+              email app, then send it when you are ready. The website itself
+              does not send your message.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <!-- include:footer --><!-- include:dialogs -->
+  </body>
+</html>

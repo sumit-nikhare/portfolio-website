@@ -1,0 +1,134 @@
+/* One finite, feathered reveal. No decorative loop or page displacement. */
+@property --theme-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+html[data-theme-transition="reveal"] * {
+  view-transition-name: none !important;
+}
+html[data-theme-transition]::view-transition {
+  pointer-events: none;
+}
+html[data-theme-transition="reveal"]::view-transition-group(root) {
+  animation: none;
+}
+html[data-theme-transition="reveal"]::view-transition-image-pair(root) {
+  isolation: isolate;
+}
+html[data-theme-transition="reveal"]::view-transition-old(root),
+html[data-theme-transition="reveal"]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  transform: none;
+  opacity: 1;
+  height: 100%;
+}
+html[data-theme-transition="reveal"][data-motion="full"]::view-transition-new(
+    root
+  ) {
+  z-index: 1;
+  mask-image: radial-gradient(
+    circle at var(--theme-x) var(--theme-y),
+    #000 max(0px, calc(var(--theme-radius) - var(--theme-feather))),
+    transparent var(--theme-radius)
+  );
+  animation: theme-daybreak var(--theme-duration) cubic-bezier(0.4, 0, 0.16, 1)
+    both;
+}
+@keyframes theme-daybreak {
+  from {
+    --theme-radius: 0px;
+    filter: brightness(0.99);
+  }
+  75% {
+    filter: brightness(1.015);
+  }
+  to {
+    --theme-radius: var(--theme-end);
+    filter: brightness(1);
+  }
+}
+
+/* The control gets a small halo and a sun/moon entrance, without moving layout. */
+.footer-preferences .theme-toggle {
+  position: relative;
+  isolation: isolate;
+}
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse,
+    #d2ff5a55,
+    #d2ff5a12 45%,
+    transparent 72%
+  );
+}
+[data-theme="light"] .theme-toggle::before {
+  background: radial-gradient(
+    ellipse,
+    #e2d7a56b,
+    #d2ff5a18 45%,
+    transparent 72%
+  );
+}
+html[data-theme-transition][data-motion="full"] .theme-toggle::before {
+  animation: theme-halo var(--theme-duration) ease-out both;
+}
+html[data-theme-transition][data-motion="full"] .theme-toggle svg {
+  transform-origin: center;
+  animation: theme-symbol var(--theme-duration) cubic-bezier(0.22, 0.68, 0, 1)
+    both;
+}
+@keyframes theme-halo {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  35% {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@keyframes theme-symbol {
+  from {
+    opacity: 0;
+    transform: rotate(-100deg) scale(0.65);
+  }
+  65% {
+    opacity: 1;
+    transform: rotate(12deg) scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* A brief palette dissolve for browsers without the snapshot/masking APIs. */
+html[data-theme-transition="fade"][data-motion="full"],
+html[data-theme-transition="fade"][data-motion="full"] * {
+  transition:
+    color var(--theme-duration) ease,
+    background-color var(--theme-duration) ease,
+    border-color var(--theme-duration) ease,
+    -webkit-text-stroke-color var(--theme-duration) ease !important;
+}
+html[data-motion="reduced"] .theme-toggle::before,
+html[data-motion="reduced"] .theme-toggle svg {
+  animation: none !important;
+}
+@media print {
+  .theme-toggle::before {
+    display: none;
+  }
+}

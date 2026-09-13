@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Playground — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="Four original experiments in onboarding, variable typography, component craft, and SVG motion. Try the interactions directly."
+    />
+    <meta property="og:title" content="Playground — Sumit Nikhare" />
+    <meta
+      property="og:description"
+      content="Thoughtful products. Playful experiences. An original portfolio concept."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="playground" style="--accent: #d2ff5a">
+    <!-- include:header -->
+    <main id="main">
+      <section class="play-hero shell">
+        <span class="eyebrow"
+          ><span class="section-number">PLAYGROUND /</span> ORIGINAL
+          EXPLORATIONS</span
+        >
+        <h1>FOLLOW THE<br /><span class="serif-word">what if.</span></h1>
+        <div class="play-hero-bottom">
+          <p>
+            A little space to experiment.<br />Four original studies in
+            interaction, type, and motion. Go ahead. Try things.
+          </p>
+          <a class="text-link" href="#onboarding"
+            >Start playing <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <div class="shell">
+        <section class="play-section" id="onboarding">
+          <div class="experiment-heading">
+            <div>
+              <span class="eyebrow experiment-label"
+                >EXPERIMENT 001 / INTERACTION</span
+              >
+              <h2>A fresh start.</h2>
+            </div>
+            <p>
+              A three-step onboarding concept that asks one useful question. An
+              original demo, independent of the portfolio case studies.
+            </p>
+          </div>
+          <div class="experiment-box" data-demo>
+            <div data-demo-static class="demo-static">
+              <h3>A fresh start — the flow</h3>
+              <ol>
+                <li>Welcome: an introduction to a calmer workspace.</li>
+                <li>
+                  Choose a focus: deep work, team momentum, or personal
+                  projects.
+                </li>
+                <li>
+                  Confirmation: a space shaped around the selected preference.
+                </li>
+              </ol>
+              <p class="content-note">
+                The interactive version uses JavaScript. The concept collects no
+                personal information.
+              </p>
+            </div>
+            <div class="demo-layout" data-demo-interactive hidden>
+              <div class="demo-brand">
+                <span>sprout®</span>
+                <div>A little space.<br />A fresh perspective.</div>
+                <small
+                  >ORIGINAL ONBOARDING CONCEPT<br />LOCAL INTERACTION · NO
+                  ACCOUNT REQUIRED</small
+                >
+              </div>
+              <div class="demo-card">
+                <div class="demo-progress" role="img" aria-label="Step 1 of 3">
+                  <span class="active"></span><span></span><span></span>
+                </div>
+                <section class="demo-panel" data-demo-panel="0">
+                  <span class="eyebrow">01 / A PLACE TO BEGIN</span>
+                  <div class="demo-welcome-icon" aria-hidden="true">✳</div>
+                  <h3 tabindex="-1">Make room for<br />something good.</h3>
+                  <p>
+                    Your ideas deserve a little breathing room.<br />Let’s make
+                    a space that feels like you.
+                  </p>
+                </section>
+                <section class="demo-panel" data-demo-panel="1" hidden>
+                  <span class="eyebrow">02 / FIND YOUR FOCUS</span>
+                  <h3 tabindex="-1" id="focus-title">What brings you here?</h3>
+                  <p>Choose one focus. You can always change your mind.</p>
+                  <fieldset
+                    class="demo-options"
+                    aria-labelledby="focus-title"
+                    aria-describedby="demo-error"
+                  >
+                    <legend class="sr-only">Choose a focus</legend>
+                    <label class="demo-option"
+                      ><input
+                        type="radio"
+                        name="focus"
+                        value="Deep work"
+                      /><span>Space for deep work</span
+                      ><span aria-hidden="true">↗</span></label
+                    ><label class="demo-option"
+                      ><input
+                        type="radio"
+                        name="focus"
+                        value="Team momentum"
+                      /><span>A little team momentum</span
+                      ><span aria-hidden="true">↗</span></label
+                    ><label class="demo-option"
+                      ><input
+                        type="radio"
+                        name="focus"
+                        value="Personal projects"
+                      /><span>Something of my own</span
+                      ><span aria-hidden="true">↗</span></label
+                    >
+                  </fieldset>
+                  <p
+                    class="demo-error"
+                    data-demo-error
+                    id="demo-error"
+                    role="alert"
+                  ></p>
+                </section>
+                <section class="demo-panel" data-demo-panel="2" hidden>
+                  <span class="eyebrow">03 / ALL SET</span>
+                  <div class="success-check" aria-hidden="true">✓</div>
+                  <h3 tabindex="-1">Good things<br />start here.</h3>
+                  <p>A little intention makes all the difference.</p>
+                  <div class="demo-summary" data-demo-summary></div>
+                  <p class="content-note" style="margin-top: 18px">
+                    You’ve reached the end of this concept demo. No account was
+                    created.
+                  </p>
+                </section>
+                <div class="demo-actions">
+                  <button class="pill-button demo-back" data-demo-back hidden>
+                    ← Back</button
+                  ><button class="pill-button" data-demo-next>
+                    Let’s begin →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="play-section" id="typography">
+          <div class="experiment-heading">
+            <div>
+              <span class="eyebrow experiment-label"
+                >EXPERIMENT 002 / TYPOGRAPHY</span
+              >
+              <h2>Words with personality.</h2>
+            </div>
+            <p>
+              A variable font, a few controls, and a surprising amount of
+              expression. Try your own words.
+            </p>
+          </div>
+          <div class="experiment-box">
+            <div class="type-stage">
+              <p class="type-output" data-type-output>What if?</p>
+            </div>
+            <div class="experiment-controls js-only" hidden>
+              <label
+                >Your words<input
+                  type="text"
+                  value="What if?"
+                  maxlength="18"
+                  data-type-text
+                  aria-label="Your words" /></label
+              ><label
+                ><span
+                  >Weight
+                  <output class="control-value" data-weight-value
+                    >600</output
+                  ></span
+                ><input
+                  type="range"
+                  min="300"
+                  max="700"
+                  step="10"
+                  value="600"
+                  data-type-weight
+                  aria-label="Font weight" /></label
+              ><label
+                ><span
+                  >Letter spacing
+                  <output class="control-value" data-tracking-value
+                    >−0.06em</output
+                  ></span
+                ><input
+                  type="range"
+                  min="-0.08"
+                  max="0.05"
+                  step="0.01"
+                  value="-0.06"
+                  data-type-tracking
+                  aria-label="Letter spacing"
+              /></label>
+            </div>
+          </div>
+        </section>
+        <section class="play-section" id="components">
+          <div class="experiment-heading">
+            <div>
+              <span class="eyebrow experiment-label"
+                >EXPERIMENT 003 / COMPONENT CRAFT</span
+              >
+              <h2>The feeling is in the details.</h2>
+            </div>
+            <p>
+              Adjust a small component’s shape and spacing. Then try its save
+              interaction. Same content, different character.
+            </p>
+          </div>
+          <div class="experiment-box component-stage">
+            <article class="component-preview" data-component-card>
+              <span class="demo-welcome-icon" aria-hidden="true">✳</span>
+              <h3>Good things,<br />collected.</h3>
+              <p>A home for the ideas you want to come back to.</p>
+              <button
+                data-save-component
+                aria-pressed="false"
+                class="js-only"
+                hidden
+              >
+                Save something good ↗
+              </button>
+            </article>
+            <div class="component-controls js-only" hidden>
+              <label
+                ><span
+                  >Corner radius
+                  <output class="control-value" data-radius-value
+                    >18px</output
+                  ></span
+                ><input
+                  type="range"
+                  min="0"
+                  max="40"
+                  value="18"
+                  data-radius
+                  aria-label="Corner radius" /></label
+              ><label class="flex items-center gap-3"
+                ><input type="checkbox" data-density class="accent-lime" /> Give
+                it more breathing room</label
+              >
+              <p class="content-note">
+                Original component study.<br />Changes stay in this experiment.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="play-section" id="svg-motion">
+          <div class="experiment-heading">
+            <div>
+              <span class="eyebrow experiment-label"
+                >EXPERIMENT 004 / SVG MOTION</span
+              >
+              <h2>A line of curiosity.</h2>
+            </div>
+            <p>
+              One path. A little timing. Follow the line as it traces its way
+              through an abstract landscape.
+            </p>
+          </div>
+          <div class="experiment-box">
+            <div class="svg-stage">
+              <svg
+                class="orbit-svg"
+                viewBox="0 0 600 260"
+                role="img"
+                aria-labelledby="svg-art-title svg-art-description"
+              >
+                <title id="svg-art-title">A line of curiosity</title>
+                <desc id="svg-art-description">
+                  An original curved path travels from left to right through
+                  three looping turns. Use Play to trace it, or Pause to stop.
+                </desc>
+                <path
+                  class="motion-path"
+                  d="M40 180 C90 180 70 55 150 55 S230 215 300 180 S310 30 390 65 S450 225 560 110"
+                />
+                <path
+                  class="trace-path"
+                  data-svg-path
+                  d="M40 180 C90 180 70 55 150 55 S230 215 300 180 S310 30 390 65 S450 225 560 110"
+                />
+                <circle data-svg-dot cx="560" cy="110" r="7" />
+                <text x="30" y="218">BEGIN</text>
+                <text x="530" y="157">AGAIN?</text></svg
+              ><span class="svg-caption"
+                >CURIOSITY RARELY TRAVELS IN A STRAIGHT LINE.</span
+              >
+            </div>
+            <div class="experiment-controls js-only" hidden>
+              <button class="pill-button" data-svg-replay>
+                Play / Replay <span aria-hidden="true">↗</span></button
+              ><button
+                class="pill-button secondary"
+                data-svg-pause
+                aria-pressed="false"
+                disabled
+              >
+                Pause
+              </button>
+              <p class="content-note">
+                Reduced motion shows the completed path.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div class="play-notice">
+          All four experiments are original demonstration concepts. They do not
+          represent a client engagement, launched product, or measured business
+          outcome.
+        </div>
+        <section class="section-space">
+          <a href="%BASE_URL%#work" class="text-link"
+            >Back to selected work <span aria-hidden="true">↗</span></a
+          >
+        </section>
+      </div>
+    </main>
+    <!-- include:footer -->
+    <!-- include:dialogs -->
+  </body>
+</html>

@@ -1,0 +1,231 @@
+/* Five-second opening interlude, on visits 1, 6, 11… */
+.site-loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  overflow: clip;
+}
+html[data-intro="loading"] .site-loader {
+  display: block;
+}
+html[data-intro="loading"] {
+  overflow: hidden;
+}
+html[data-intro="loading"]::view-transition {
+  display: none;
+}
+.loader-shutters {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.loader-shutters span {
+  flex: 1;
+  background: var(--ink);
+  border-right: 1px solid #24251f;
+}
+.loader-composition {
+  position: absolute;
+  inset: 0;
+  padding: clamp(28px, 6vw, 96px) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.loader-kicker,
+.loader-label {
+  font:
+    10px "Inter",
+    sans-serif;
+  letter-spacing: 0.13em;
+}
+.loader-kicker {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.loader-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(64px, 10.5vw, 160px);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+.loader-title > span {
+  color: var(--lime);
+}
+.loader-mark {
+  position: absolute;
+  right: 12%;
+  top: 30%;
+  color: var(--lime);
+  font-size: clamp(72px, 12vw, 170px);
+  line-height: 1;
+}
+.loader-label {
+  display: flex;
+  justify-content: space-between;
+  max-width: 350px;
+  margin-top: 48px;
+}
+.loader-line {
+  display: block;
+  height: 2px;
+  max-width: 350px;
+  margin-top: 18px;
+  background: var(--line);
+  overflow: hidden;
+}
+.loader-line::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: var(--lime);
+  animation: loader-travel 1s ease-in-out infinite;
+}
+@keyframes loader-travel {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(360%);
+  }
+}
+.site-scroll-progress {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  pointer-events: none;
+}
+html.js[data-motion="full"] .site-scroll-progress {
+  display: block;
+}
+.site-scroll-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.disclosure-content {
+  display: flow-root;
+}
+.approach-list details[open] summary[data-expanded="false"] span:last-child,
+.faq-list details[open] summary[data-expanded="false"] > span {
+  transform: rotate(0);
+}
+.approach-list details[open] summary[data-expanded="true"] span:last-child,
+.faq-list details[open] summary[data-expanded="true"] > span {
+  transform: rotate(45deg);
+}
+.nav-dialog nav a {
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-dialog nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.nav-dialog nav a:hover::after,
+.nav-dialog nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+.nav-dialog nav a b {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.nav-dialog nav a:hover b,
+.nav-dialog nav a:focus-visible b {
+  transform: translate(4px, -4px);
+}
+.menu-lines::before,
+.menu-lines::after {
+  transition: transform 0.3s;
+}
+.menu-toggle[aria-expanded="true"] .menu-lines::before {
+  transform: translateY(3px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .menu-lines::after {
+  transform: translateY(-3px) rotate(-45deg);
+}
+html[data-motion="full"] .media-dialog[open] {
+  animation: viewer-expand 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+html[data-motion="full"] [data-demo-panel]:not([hidden]) {
+  animation: panel-arrive 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes panel-arrive {
+  from {
+    opacity: 0.25;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes viewer-expand {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Native navigation stays intact, including browsers without View Transitions. */
+html[data-motion="full"]::view-transition-old(root) {
+  animation: page-away 0.25s ease both;
+}
+html[data-motion="full"]::view-transition-new(root) {
+  animation: page-arrive 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes page-away {
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+@keyframes page-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+html[data-motion="reduced"]::view-transition-old(*),
+html[data-motion="reduced"]::view-transition-new(*) {
+  animation: none !important;
+}
+@media (max-width: 767px) {
+  .loader-mark {
+    right: var(--gutter);
+    top: 8%;
+    font-size: 64px;
+  }
+  .loader-kicker {
+    font-size: 8px;
+  }
+}
+@media print {
+  .site-loader,
+  .site-scroll-progress {
+    display: none !important;
+  }
+}

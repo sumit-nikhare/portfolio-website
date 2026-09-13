@@ -1,0 +1,89 @@
+<dialog class="nav-dialog" id="navigation-dialog" aria-labelledby="nav-title">
+  <div class="dialog-top">
+    <span class="eyebrow" id="nav-title">TAKE A LOOK AROUND</span
+    ><button
+      class="icon-button"
+      data-close-dialog
+      aria-label="Close navigation"
+    >
+      <i data-lucide="x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="nav-dialog-grid">
+    <nav class="expanded-site-nav" aria-label="Expanded navigation">
+      <a href="%BASE_URL%work/" data-preview="chip-2" data-nav-page="work"
+        ><span>01</span>Selected work <b aria-hidden="true">↗</b></a
+      >
+      <a href="%BASE_URL%about/" data-preview="anarock" data-nav-page="about"
+        ><span>02</span>About me <b aria-hidden="true">↗</b></a
+      >
+      <a
+        href="%BASE_URL%resume/"
+        data-preview="ai-enabled"
+        data-nav-page="resume"
+        ><span>03</span>Résumé <b aria-hidden="true">↗</b></a
+      >
+      <a href="%BASE_URL%blogs/" data-preview="abdm-abha" data-nav-page="blogs"
+        ><span>04</span>Field notes / Blog <b aria-hidden="true">↗</b></a
+      >
+      <a
+        href="%BASE_URL%playground/"
+        data-preview="cho-soft"
+        data-nav-page="playground"
+        ><span>05</span>Playground <b aria-hidden="true">↗</b></a
+      >
+      <a href="%BASE_URL%contact/" data-preview="tarp" data-nav-page="contact"
+        ><span>06</span>Contact me <b aria-hidden="true">↗</b></a
+      >
+    </nav>
+    <div class="nav-preview">
+      <img
+        src="%BASE_URL%assets/chip-2-cover.webp"
+        width="1200"
+        height="900"
+        alt="CHIP-2 workflow illustration"
+        data-nav-preview
+      /><span>SELECTED WORK / SUMIT NIKHARE</span>
+    </div>
+  </div>
+  <div class="nav-dialog-bottom">
+    <span>Product thinking. Playful execution.</span
+    ><span>SUMIT NIKHARE — PORTFOLIO</span>
+  </div>
+</dialog>
+<dialog class="media-dialog" id="media-dialog" aria-labelledby="media-caption">
+  <div class="dialog-top">
+    <span class="eyebrow" data-media-count>01 / 01</span>
+    <div class="media-toolbar">
+      <button class="icon-button" data-zoom-out aria-label="Zoom out">
+        <i data-lucide="minus" aria-hidden="true"></i></button
+      ><button class="zoom-reset" data-zoom-reset aria-label="Reset zoom">
+        100%</button
+      ><button class="icon-button" data-zoom-in aria-label="Zoom in">
+        <i data-lucide="plus" aria-hidden="true"></i></button
+      ><button
+        class="icon-button"
+        data-close-dialog
+        aria-label="Close image viewer"
+      >
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div
+    class="media-viewport"
+    tabindex="0"
+    aria-label="Image area. When zoomed, scroll to inspect the image."
+  >
+    <img data-media-image alt="" />
+  </div>
+  <div class="media-bottom">
+    <button class="icon-button" data-media-prev aria-label="Previous image">
+      <i data-lucide="arrow-left" aria-hidden="true"></i>
+    </button>
+    <p id="media-caption" aria-live="polite"></p>
+    <button class="icon-button" data-media-next aria-label="Next image">
+      <i data-lucide="arrow-right" aria-hidden="true"></i>
+    </button>
+  </div>
+</dialog>

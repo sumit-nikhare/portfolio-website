@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Make the next useful action obvious. — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="An interface can contain everything and still leave someone wondering where to begin."
+    />
+    <meta
+      property="og:title"
+      content="Make the next useful action obvious. — Sumit Nikhare"
+    />
+    <meta
+      property="og:description"
+      content="An interface can contain everything and still leave someone wondering where to begin."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="article">
+    <!-- include:header -->
+    <main id="main">
+      <div
+        class="reading-progress"
+        data-reading-progress
+        aria-hidden="true"
+      ></div>
+      <header class="shell article-hero">
+        <a class="text-link" href="%BASE_URL%blogs/"
+          >← All field notes <span aria-hidden="true">↗</span></a
+        >
+        <div class="article-meta">
+          <span>PRODUCT THINKING</span><span>2 MIN READ</span
+          ><span>DESIGN NOTE</span>
+        </div>
+        <h1 data-page-title>Make the next <br />useful action obvious.</h1>
+        <p class="article-deck">
+          An interface can contain everything and still leave someone wondering
+          where to begin.
+        </p>
+        <div class="article-byline">
+          <span>Sumit Nikhare · Product Designer</span
+          ><button
+            class="text-link js-only"
+            hidden
+            type="button"
+            data-copy-link
+          >
+            Copy article link <span aria-hidden="true">↗</span></button
+          ><span
+            data-share-status
+            class="content-note"
+            aria-live="polite"
+          ></span>
+        </div>
+        <div class="journal-art art-signal" aria-hidden="true">
+          <span>FIELD NOTES / DESIGN, WITH INTENT.</span>
+          <div class="art-shape"><b>↗</b></div>
+          <small>FIND THE SIGNAL</small>
+        </div>
+      </header>
+      <div class="shell article-layout">
+        <nav class="case-index" aria-label="Article sections">
+          <span class="eyebrow">IN THIS NOTE</span
+          ><a href="#the-question">01 — Start with the question</a
+          ><a href="#one-example">02 — Give one action a clear context</a
+          ><a href="#language">03 — Let the words do some work</a
+          ><a href="#states">04 — Include the quiet states</a
+          ><a href="#try-it">05 — A small exercise</a>
+        </nav>
+        <article class="article-prose" data-reading-body>
+          <section class="article-chapter" id="the-question">
+            <h2>Start with the question</h2>
+            <p>
+              A workspace can have a search field, a navigation rail, a set of
+              projects, and a row of metrics. Each piece may be useful.
+              Together, they still need to answer a simple question: what can
+              someone do here, and where should they begin?
+            </p>
+            <p>
+              Consider a quiet project overview as an illustrative starting
+              point. This is an exploration of hierarchy, not evidence that a
+              particular layout improves productivity. The distinction matters
+              because a design intention and an observed outcome are different
+              things.
+            </p>
+          </section>
+          <section class="article-chapter" id="one-example">
+            <h2>Give one action a clear context</h2>
+            <p>
+              Imagine opening a saved project after several days away. A
+              prominent button labeled “Continue” gives you an action, but very
+              little context. “Open website refresh” names the destination. A
+              short status line can then explain why that destination deserves
+              attention.
+            </p>
+            <p>
+              The aim is not to force every visitor toward the same button. It
+              is to make the consequence of a choice understandable. A secondary
+              path can stay visible without demanding the same level of
+              emphasis.
+            </p>
+          </section>
+          <section class="article-chapter" id="language">
+            <h2>Let the words do some work</h2>
+            <p>
+              Before changing color or size, read the labels without looking at
+              the screen. Would they still distinguish the actions? “View,”
+              “Open,” and “Continue” become more useful when the surrounding
+              words name an object or a destination.
+            </p>
+            <p>
+              W3C’s forms guidance calls for explicit labels and useful
+              instructions. The same attention to understandable language is
+              useful when reviewing the actions around a form.
+              <a href="https://www.w3.org/WAI/tutorials/forms/"
+                >Read the W3C forms tutorial.</a
+              >
+            </p>
+          </section>
+          <section class="article-chapter" id="states">
+            <h2>Include the quiet states</h2>
+            <p>
+              The first useful action may change when the workspace is empty, a
+              request is loading, or an operation fails. A polished populated
+              screen is only one part of the experience.
+            </p>
+            <p>
+              Write the action for each state on a separate line. An empty
+              project list might invite creation. A failed load might offer a
+              retry while preserving a route back. A completed task might show
+              where to review the result. These are decisions to evaluate, not
+              universal answers.
+            </p>
+          </section>
+          <section class="article-chapter" id="try-it">
+            <h2>A small exercise</h2>
+            <p>
+              Take one screen and cover everything except its heading, primary
+              action, and supporting sentence. Ask another person what they
+              expect the action to do. Then uncover the rest and ask whether the
+              answer changes.
+            </p>
+            <p>
+              Use the disagreement as a starting point for a design discussion.
+              It can reveal competing cues or missing context. It cannot, by
+              itself, establish that the product is usable. A fuller evaluation
+              should include realistic tasks, different states, and people who
+              resemble the intended audience.
+            </p>
+          </section>
+          <aside class="article-draft-note">
+            <span class="eyebrow">A NOTE ON PRACTICE</span>
+            <p>
+              Written for this portfolio to explain a design approach. Examples
+              are illustrative; this article does not present a separate
+              user-research study or measured client result.
+            </p>
+          </aside>
+        </article>
+      </div>
+      <section class="shell article-next">
+        <span class="eyebrow"
+          ><span class="section-number">KEEP READING /</span>ANOTHER FIELD
+          NOTE</span
+        ><a href="%BASE_URL%blogs/motion-with-a-purpose/"
+          ><h2>Motion should explain <br />what changed.</h2>
+          <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <!-- include:footer --><!-- include:dialogs -->
+  </body>
+</html>

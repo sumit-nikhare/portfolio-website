@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Motion should explain what changed. — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="A transition earns its place when the interface remains understandable with it switched off."
+    />
+    <meta
+      property="og:title"
+      content="Motion should explain what changed. — Sumit Nikhare"
+    />
+    <meta
+      property="og:description"
+      content="A transition earns its place when the interface remains understandable with it switched off."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="article">
+    <!-- include:header -->
+    <main id="main">
+      <div
+        class="reading-progress"
+        data-reading-progress
+        aria-hidden="true"
+      ></div>
+      <header class="shell article-hero">
+        <a class="text-link" href="%BASE_URL%blogs/"
+          >← All field notes <span aria-hidden="true">↗</span></a
+        >
+        <div class="article-meta">
+          <span>INTERACTION DESIGN</span><span>2 MIN READ</span
+          ><span>DESIGN NOTE</span>
+        </div>
+        <h1 data-page-title>Motion should explain <br />what changed.</h1>
+        <p class="article-deck">
+          A transition earns its place when the interface remains understandable
+          with it switched off.
+        </p>
+        <div class="article-byline">
+          <span>Sumit Nikhare · Product Designer</span
+          ><button
+            class="text-link js-only"
+            hidden
+            type="button"
+            data-copy-link
+          >
+            Copy article link <span aria-hidden="true">↗</span></button
+          ><span
+            data-share-status
+            class="content-note"
+            aria-live="polite"
+          ></span>
+        </div>
+        <div class="journal-art art-motion" aria-hidden="true">
+          <span>FIELD NOTES / DESIGN, WITH INTENT.</span>
+          <div class="art-shape"><b>~</b></div>
+          <small>MOVE WITH MEANING</small>
+        </div>
+      </header>
+      <div class="shell article-layout">
+        <nav class="case-index" aria-label="Article sections">
+          <span class="eyebrow">IN THIS NOTE</span
+          ><a href="#the-change">01 — Name the change before the animation</a
+          ><a href="#continuity">02 — Use continuity carefully</a
+          ><a href="#control">03 — Make the visitor’s choice real</a
+          ><a href="#settle">04 — Know when the movement is over</a
+          ><a href="#review">05 — Review the still version</a>
+        </nav>
+        <article class="article-prose" data-reading-body>
+          <section class="article-chapter" id="the-change">
+            <h2>Name the change before the animation</h2>
+            <p>
+              Start by writing a sentence about the interface: a panel opens, a
+              selected item moves, or a set of results changes. That sentence is
+              the reason for the transition. An easing curve is a later
+              decision.
+            </p>
+            <p>
+              In this portfolio, the project collection can change between a
+              grid and a list. Keeping the same project imagery and titles
+              across those layouts gives the change a recognizable anchor. The
+              layout animation is an enhancement to that relationship.
+            </p>
+          </section>
+          <section class="article-chapter" id="continuity">
+            <h2>Use continuity carefully</h2>
+            <p>
+              A cover that expands into a case-study image can suggest that the
+              next page belongs to the selected project. That relationship is
+              useful only when navigation remains reliable. A missed transition
+              must still arrive at the intended page.
+            </p>
+            <p>
+              This site uses ordinary links and native page navigation.
+              Supported browsers may animate the change; the destination does
+              not depend on that animation. The title, opening summary, and
+              image provide the context after arrival.
+            </p>
+          </section>
+          <section class="article-chapter" id="control">
+            <h2>Make the visitor’s choice real</h2>
+            <p>
+              W3C’s guidance for animation triggered by interaction describes
+              giving people a way to disable nonessential movement. This is
+              particularly relevant to scrolling effects and parallax.
+              <a
+                href="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html"
+                >Read the W3C explanation.</a
+              >
+            </p>
+            <p>
+              The portfolio starts from the system motion preference and
+              remembers an explicit choice. Reduced motion removes the pinned
+              sculpture, distortion, and parallax. The case studies, controls,
+              and artwork remain available.
+            </p>
+          </section>
+          <section class="article-chapter" id="settle">
+            <h2>Know when the movement is over</h2>
+            <p>
+              A hover effect can become background noise if it continues after
+              the pointer has stopped. The project-cover distortion here fades
+              back to the original image once movement settles. It is meant as a
+              brief response, not a permanent visual layer.
+            </p>
+            <p>
+              Animation also needs a lifecycle. Graphics should stop requesting
+              frames when their scene is outside the viewport or the browser tab
+              is hidden. These implementation choices support a quieter
+              experience as well as a lighter page.
+            </p>
+          </section>
+          <section class="article-chapter" id="review">
+            <h2>Review the still version</h2>
+            <p>
+              Turn off motion and complete the same tasks: navigate to a
+              project, open an image, change a filter, and return to the
+              collection. Look for explanations that were carried only by
+              movement.
+            </p>
+            <p>
+              Then turn motion back on and ask what each effect adds. If the
+              answer is unclear, simplify it. This review is a design exercise
+              rather than a substitute for testing with people who have
+              different access needs.
+            </p>
+          </section>
+          <aside class="article-draft-note">
+            <span class="eyebrow">A NOTE ON PRACTICE</span>
+            <p>
+              Written for this portfolio to explain a design approach. Examples
+              are illustrative; this article does not present a separate
+              user-research study or measured client result.
+            </p>
+          </aside>
+        </article>
+      </div>
+      <section class="shell article-next">
+        <span class="eyebrow"
+          ><span class="section-number">KEEP READING /</span>ANOTHER FIELD
+          NOTE</span
+        ><a href="%BASE_URL%blogs/show-the-design-decisions/"
+          ><h2>A case study is a <br />chain of decisions.</h2>
+          <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <!-- include:footer --><!-- include:dialogs -->
+  </body>
+</html>

@@ -1,0 +1,284 @@
+/* A paper-and-ink companion to the original charcoal palette.
+   --lime is readable accent text; neon remains on artwork and filled controls. */
+:root[data-theme="light"] {
+  --ink: #f2f0e9;
+  --paper: #20251b;
+  --lime: #4c641c;
+  --muted: #62675a;
+  --line: #d0d2c3;
+  --surface: #e6e9dc;
+  --surface-raised: #faf9f4;
+  --control-line: #929b80;
+  color-scheme: light;
+}
+
+.footer-bottom .footer-preferences {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  margin-left: auto;
+}
+.footer-preferences button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  margin: 0;
+}
+.footer-preferences button:hover,
+.footer-preferences button:focus-visible {
+  color: var(--paper);
+  background: color-mix(in srgb, var(--paper) 7%, transparent);
+}
+.footer-preferences button:active {
+  background: color-mix(in srgb, var(--paper) 12%, transparent);
+}
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+  color: var(--lime);
+  flex-shrink: 0;
+}
+.theme-toggle .theme-sun,
+[data-theme="light"] .theme-toggle .theme-moon {
+  display: none;
+}
+[data-theme="light"] .theme-toggle .theme-sun {
+  display: block;
+}
+
+/* Raised surfaces and readable secondary copy. */
+[data-theme="light"]
+  :is(.about-art, .outside-poster, .assembly, .experiment-box, .svg-stage) {
+  background: var(--surface);
+  border-color: var(--line);
+}
+[data-theme="light"]
+  :is(.playground-teaser, .form-intro, .message-preview, .article-draft-note) {
+  background: var(--surface);
+  border-color: var(--line);
+}
+[data-theme="light"] .form-intro {
+  border-left-color: var(--lime);
+}
+[data-theme="light"]
+  :is(
+    .hero-bottom p,
+    .ticker span,
+    .project-tags,
+    .media-bottom p,
+    .case-chapter > p,
+    .article-chapter p,
+    .form-intro,
+    .experiment-controls label,
+    .assembly-tag,
+    .outside-poster > span,
+    .sculpture-caption,
+    .sculpture-cross,
+    .overview-time
+  ) {
+  color: var(--muted);
+}
+[data-theme="light"]
+  :is(
+    .preview-pill,
+    .round-arrow,
+    .icon-button,
+    .services-row > div > span,
+    .filter-group button,
+    .view-controls button,
+    .intent-options span
+  ) {
+  border-color: var(--control-line);
+}
+[data-theme="light"] .preview-pill {
+  color: var(--muted);
+}
+[data-theme="light"]
+  :is(
+    .sculpture-orbit,
+    .sculpture-orbit::after,
+    .about-orbit,
+    .contact-orbit,
+    .principle-grid article,
+    .case-index a,
+    .experiment-controls
+  ) {
+  border-color: var(--line);
+}
+[data-theme="light"] .text-link {
+  border-color: var(--control-line);
+}
+[data-theme="light"] .loader-shutters span {
+  border-color: var(--line);
+}
+[data-theme="light"] .sculpture-fallback img {
+  border-color: #78826450;
+  box-shadow: 0 24px 40px #25301525;
+}
+[data-theme="light"] .assembly-layer {
+  border-color: #78826450;
+  box-shadow: 0 20px 30px #25301525;
+}
+[data-theme="light"] dialog::backdrop {
+  background: #30372955;
+}
+
+/* Lime remains electric on filled buttons, art panels and selection. */
+[data-theme="light"] ::selection {
+  background: #d2ff5a;
+  color: #20251b;
+}
+[data-theme="light"]
+  :is(.pill-button, .skip-link, .filter-group button[aria-pressed="true"]) {
+  background: #d2ff5a;
+  border-color: #93ae51;
+  color: #20251b;
+}
+[data-theme="light"] .pill-button:hover {
+  background: #20251b;
+  border-color: #20251b;
+  color: #f2f0e9;
+}
+[data-theme="light"] .pill-button.secondary {
+  background: transparent;
+  border-color: var(--control-line);
+  color: var(--paper);
+}
+[data-theme="light"] .pill-button.secondary:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+[data-theme="light"] :is(.playground-art, .type-stage) {
+  background: #d2ff5a;
+  color: #20251b;
+}
+[data-theme="light"] .play-art-pill {
+  background: #20251b;
+  color: #f2f0e9;
+}
+[data-theme="light"]
+  :is(.project-sticker, .work-image-number, .zoom-indicator) {
+  color: #f2f0e9;
+}
+[data-theme="light"] :is(.project-view, .work-image-arrow) {
+  background: #f2f0e9;
+  color: #20251b;
+}
+[data-theme="light"] .project-image:hover .project-view {
+  background: #d2ff5a;
+}
+
+/* Preserve each project's hue, with darker text on the paper background. */
+[data-theme="light"]
+  :is(
+    .case-hero h1,
+    .case-index a[aria-current="location"],
+    .case-chapter > .eyebrow,
+    .insight-card > span,
+    .result-list > div > span,
+    .next-project h2,
+    .work-meta h3 span,
+    .evolution-tabs button[aria-selected="true"]
+  ) {
+  color: var(--paper);
+  color: color-mix(in srgb, var(--accent) 32%, #20251b);
+}
+[data-theme="light"] .evolution-tabs button[aria-selected="true"]::after {
+  background: color-mix(in srgb, var(--accent) 32%, #20251b);
+}
+[data-theme="light"] .insight-card {
+  border-top-color: color-mix(in srgb, var(--accent) 50%, #20251b);
+}
+
+/* Forms, searchable collections, and interactive experiments. */
+[data-theme="light"]
+  :is(
+    .contact-form input:not([type="radio"]),
+    .contact-form textarea,
+    .journal-search input,
+    .experiment-controls input[type="text"]
+  ) {
+  background: var(--surface-raised);
+  border-color: var(--control-line);
+  color: var(--paper);
+}
+[data-theme="light"]
+  :is(
+    .contact-form input,
+    .contact-form textarea,
+    .journal-search input
+  )::placeholder {
+  color: #707766;
+}
+[data-theme="light"]
+  :is(
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .journal-search input:focus,
+    .experiment-controls input:focus
+  ) {
+  border-color: var(--lime);
+}
+[data-theme="light"] .intent-options input:checked + span {
+  background: #dce7c7;
+  border-color: var(--lime);
+}
+[data-theme="light"] .view-controls button[aria-pressed="true"] {
+  border-color: var(--lime);
+}
+[data-theme="light"] .orbit-svg text {
+  fill: var(--muted);
+}
+[data-theme="light"] .orbit-svg .motion-path {
+  stroke: #879b69;
+}
+[data-theme="light"] .demo-actions .pill-button {
+  background: #26351d;
+  color: #f0f2e8;
+  border-color: #26351d;
+}
+[data-theme="light"] .demo-actions .demo-back {
+  background: transparent;
+  color: #344429;
+  border-color: #a9b69a;
+}
+/* The résumé stays an ivory document in either theme, including browser print. */
+[data-theme="light"] .resume-paper {
+  --paper: #f2f0e9;
+  --ink: #101010;
+  background: #faf9f4;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 18px 60px #30372908;
+}
+@media (max-width: 767px) {
+  .footer-bottom .footer-preferences {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .footer-bottom .back-top {
+    margin-left: auto;
+  }
+  .footer-preferences button {
+    flex: 1;
+    min-height: 44px;
+  }
+}
+@media print {
+  html[data-theme="light"] body[data-page="resume"] .resume-paper {
+    background: white;
+    box-shadow: none;
+  }
+}

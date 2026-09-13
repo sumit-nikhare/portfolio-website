@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "chip-2",
+    "title": "CHIP-2",
+    "accent": "#D2FF5A",
+    "steps": [
+      "Choose a programme",
+      "Complete the task",
+      "Review and follow up"
+    ],
+    "patterns": [
+      "Role-based navigation",
+      "Shared forms and queues",
+      "Clear status feedback"
+    ],
+    "states": [
+      "Entry and validation",
+      "Review and approval",
+      "Offline and recovery"
+    ]
+  },
+  {
+    "slug": "samasta",
+    "title": "Samasta",
+    "accent": "#B6DCA6",
+    "steps": ["Register", "Deliver a service", "Complete the record"],
+    "patterns": [
+      "Consistent service entry",
+      "Clear form hierarchy",
+      "Visible completion state"
+    ],
+    "states": [
+      "Required information",
+      "Validation feedback",
+      "Review and completion"
+    ]
+  },
+  {
+    "slug": "cho-soft",
+    "title": "CHO Soft",
+    "accent": "#F0B49A",
+    "steps": ["Prepare activity", "Submit for review", "Resolve and complete"],
+    "patterns": ["Task queues", "Supervisor review", "Actionable exceptions"],
+    "states": ["In progress", "Ready for review", "Returned or complete"]
+  },
+  {
+    "slug": "ai-enabled",
+    "title": "AI-enabled dashboard",
+    "accent": "#BCB2D8",
+    "steps": ["Explore an insight", "Review the context", "Choose an action"],
+    "patterns": [
+      "Explainability cues",
+      "Confidence states",
+      "Human review actions"
+    ],
+    "states": [
+      "Available for review",
+      "Needs more context",
+      "Escalated or resolved"
+    ]
+  },
+  {
+    "slug": "abdm-abha",
+    "title": "ABDM–ABHA",
+    "accent": "#C8C3A1",
+    "steps": [
+      "Understand requirements",
+      "Complete the flow",
+      "Review evidence"
+    ],
+    "patterns": [
+      "Requirement mapping",
+      "Explicit evidence states",
+      "Implementation guidance"
+    ],
+    "states": [
+      "Information needed",
+      "Verification in progress",
+      "Reviewable outcome"
+    ]
+  },
+  {
+    "slug": "anarock",
+    "title": "Anarock",
+    "accent": "#93B6B0",
+    "steps": [
+      "Map a workflow",
+      "Compose with components",
+      "Review implementation"
+    ],
+    "patterns": [
+      "Reusable components",
+      "Consistent interactions",
+      "Annotated handoff"
+    ],
+    "states": [
+      "Default and active",
+      "Loading and empty",
+      "Validation and feedback"
+    ]
+  },
+  {
+    "slug": "tarp",
+    "title": "TARP Agile Platform",
+    "accent": "#BE8A79",
+    "steps": ["Find shared patterns", "Build the library", "Support delivery"],
+    "patterns": [
+      "Component consistency",
+      "Workflow prototypes",
+      "Interaction notes"
+    ],
+    "states": [
+      "Resting and selected",
+      "Empty and populated",
+      "Feedback and recovery"
+    ]
+  }
+]

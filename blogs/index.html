@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Field notes — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="Product design notes by Sumit Nikhare on useful interfaces, meaningful motion, and explaining design decisions."
+    />
+    <meta property="og:title" content="Field notes — Sumit Nikhare" />
+    <meta
+      property="og:description"
+      content="Product design notes by Sumit Nikhare on useful interfaces, meaningful motion, and explaining design decisions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="blogs">
+    <!-- include:header -->
+    <main id="main">
+      <!-- EDIT PAGE CONTENT: text and images are kept in the HTML sections below. See README.md for the editing guide. -->
+      <section class="inner-hero shell blog-page-hero">
+        <span class="eyebrow"
+          ><span class="section-number">BLOG /</span>THINKING OUT LOUD</span
+        >
+        <div class="blog-hero-row">
+          <h1 data-page-title>
+            Field<br /><span class="serif-word">notes.</span>
+          </h1>
+          <div>
+            <span class="blog-asterisk" aria-hidden="true">✳</span>
+            <p>
+              Questions worth asking.<br />Details worth noticing.<br />A few
+              things along the way.
+            </p>
+          </div>
+        </div>
+        <p class="content-note">
+          Notes on product thinking, interaction design, and communicating
+          design decisions.
+        </p>
+      </section>
+      <section
+        class="shell collection-section journal-section"
+        data-collection
+        data-item-label="articles"
+        aria-label="Blog articles"
+      >
+        <div class="journal-tools js-only" hidden>
+          <div class="filter-group" role="group" aria-label="Filter articles">
+            <button type="button" data-filter="all" aria-pressed="true">
+              All</button
+            ><button type="button" data-filter="product" aria-pressed="false">
+              Product</button
+            ><button
+              type="button"
+              data-filter="interaction"
+              aria-pressed="false"
+            >
+              Interaction</button
+            ><button type="button" data-filter="practice" aria-pressed="false">
+              Practice
+            </button>
+          </div>
+          <label class="journal-search" for="article-search"
+            ><span>Search articles</span
+            ><input
+              type="search"
+              id="article-search"
+              data-search
+              placeholder="A thought, a topic…"
+              autocomplete="off"
+          /></label>
+        </div>
+        <p
+          class="collection-count js-only"
+          hidden
+          data-collection-count
+          aria-live="polite"
+        >
+          Showing 3 articles
+        </p>
+        <div class="journal-grid" data-collection-grid>
+          <article
+            class="journal-card journal-featured"
+            data-collection-item
+            data-category="product"
+            data-title="Make the next useful action obvious. An interface can contain everything and still leave someone wondering where to begin."
+          >
+            <div class="journal-image">
+              <div class="journal-art art-signal" aria-hidden="true">
+                <span>FIELD NOTES / DESIGN, WITH INTENT.</span>
+                <div class="art-shape"><b>↗</b></div>
+                <small>FIND THE SIGNAL</small>
+              </div>
+            </div>
+            <div class="journal-meta">
+              <div class="article-meta">
+                <span>PRODUCT THINKING</span><span>2 MIN READ</span>
+              </div>
+              <a href="%BASE_URL%blogs/the-next-useful-action/"
+                ><h2>Make the next<br />useful action obvious.</h2></a
+              >
+              <p>
+                An interface can contain everything and still leave someone
+                wondering where to begin.
+              </p>
+              <div class="journal-bottom">
+                <span>DESIGN NOTE / 2026</span
+                ><a
+                  class="text-link"
+                  href="%BASE_URL%blogs/the-next-useful-action/"
+                  >Read the note <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="journal-card"
+            data-collection-item
+            data-category="interaction"
+            data-title="Motion should explain what changed. A transition earns its place when the interface remains understandable with it switched off."
+          >
+            <div class="journal-image">
+              <div class="journal-art art-motion" aria-hidden="true">
+                <span>FIELD NOTES / DESIGN, WITH INTENT.</span>
+                <div class="art-shape"><b>~</b></div>
+                <small>MOVE WITH MEANING</small>
+              </div>
+            </div>
+            <div class="journal-meta">
+              <div class="article-meta">
+                <span>INTERACTION DESIGN</span><span>2 MIN READ</span>
+              </div>
+              <a href="%BASE_URL%blogs/motion-with-a-purpose/"
+                ><h2>Motion should explain<br />what changed.</h2></a
+              >
+              <p>
+                A transition earns its place when the interface remains
+                understandable with it switched off.
+              </p>
+              <div class="journal-bottom">
+                <span>DESIGN NOTE / 2026</span
+                ><a
+                  class="text-link"
+                  href="%BASE_URL%blogs/motion-with-a-purpose/"
+                  >Read the note <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="journal-card"
+            data-collection-item
+            data-category="practice"
+            data-title="A case study is a chain of decisions. The interesting part sits between the first question and the polished final screen."
+          >
+            <div class="journal-image">
+              <div class="journal-art art-process" aria-hidden="true">
+                <span>FIELD NOTES / DESIGN, WITH INTENT.</span>
+                <div class="art-shape"><b>✳</b></div>
+                <small>THINK / MAKE / REFINE</small>
+              </div>
+            </div>
+            <div class="journal-meta">
+              <div class="article-meta">
+                <span>DESIGN PRACTICE</span><span>2 MIN READ</span>
+              </div>
+              <a href="%BASE_URL%blogs/show-the-design-decisions/"
+                ><h2>A case study is a<br />chain of decisions.</h2></a
+              >
+              <p>
+                The interesting part sits between the first question and the
+                polished final screen.
+              </p>
+              <div class="journal-bottom">
+                <span>DESIGN NOTE / 2026</span
+                ><a
+                  class="text-link"
+                  href="%BASE_URL%blogs/show-the-design-decisions/"
+                  >Read the note <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="empty-collection" data-collection-empty hidden>
+          <h2>No notes found.</h2>
+          <p>Try a different phrase or show all topics.</p>
+          <button type="button" class="text-link" data-reset-collection>
+            Reset search and filters <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </section>
+      <section class="page-cta shell">
+        <span class="eyebrow"
+          ><span class="section-number">NEXT /</span>LET’S MAKE SOMETHING</span
+        >
+        <h2>A thought to add?<br />Let’s talk about it.</h2>
+        <a class="pill-button" href="%BASE_URL%contact/"
+          >Contact me <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <!-- include:footer --><!-- include:dialogs -->
+  </body>
+</html>

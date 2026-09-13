@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="{{robots}}" />
+    <title>Samasta — Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="Primary healthcare application design across registration, outpatient services, records, inventory, and related clinical-service workflows. A case summary by Sumit Nikhare."
+    />
+    <meta property="og:title" content="Samasta — Sumit Nikhare" />
+    <meta
+      property="og:description"
+      content="Primary healthcare application design across registration, outpatient services, records, inventory, and related clinical-service workflows. A case summary by Sumit Nikhare."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body data-page="case" style="--accent: #b6dca6">
+    <!-- include:header -->
+    <main id="main">
+      <!-- EDIT: Personal content supplied by Sumit; supporting copy written for this portfolio. -->
+      <section class="case-hero shell">
+        <div class="case-breadcrumb">
+          <a href="%BASE_URL%work/">← BACK TO SELECTED WORK</a
+          ><span>Khushi Baby / SELECTED WORK</span>
+        </div>
+        <h1 class="">Samasta<span>.</span></h1>
+        <div class="case-intro">
+          <h2>Less friction in the flow of care.</h2>
+          <p>
+            Primary healthcare application design across registration,
+            outpatient services, records, inventory, and related
+            clinical-service workflows.
+          </p>
+        </div>
+        <a
+          class="case-cover media-link"
+          href="%BASE_URL%assets/samasta-cover.webp"
+          data-gallery="study"
+          data-caption="Samasta — recreated workflow illustration"
+          ><img
+            src="%BASE_URL%assets/samasta-cover.webp"
+            srcset="
+              %BASE_URL%assets/samasta-cover-600.webp  600w,
+              %BASE_URL%assets/samasta-cover.webp     1200w
+            "
+            sizes="(max-width: 767px) 100vw, 70vw"
+            width="1200"
+            height="900"
+            alt="Samasta — recreated workflow illustration"
+            fetchpriority="high" /><span
+            class="zoom-indicator"
+            aria-hidden="true"
+            ><i data-lucide="maximize-2"></i></span
+        ></a>
+        <dl class="case-facts">
+          <div>
+            <dt>Organization</dt>
+            <dd>Khushi Baby</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Primary healthcare</dd>
+          </div>
+          <div>
+            <dt>My contribution</dt>
+            <dd>UX, interface design &amp; delivery</dd>
+          </div>
+          <div>
+            <dt>Context</dt>
+            <dd>Tenure from Jan 2023</dd>
+          </div>
+        </dl>
+      </section>
+      <div class="case-body shell">
+        <nav class="case-index" aria-label="Case study sections">
+          <span class="eyebrow">IN THIS STUDY</span
+          ><a href="#overview">01 — Overview</a
+          ><a href="#challenge">02 — The challenge</a
+          ><a href="#decisions">03 — Design decisions</a
+          ><a href="#evolution">04 — Design explorer</a
+          ><a href="#solution">05 — The approach</a
+          ><a href="#outcomes">06 — Outcomes &amp; context</a>
+        </nav>
+        <div>
+          <section class="case-chapter" id="overview">
+            <span class="eyebrow">01 / THE SHORT VERSION</span>
+            <h2>Useful work.<br />A clear contribution.</h2>
+            <p>
+              Primary healthcare application design across registration,
+              outpatient services, records, inventory, and related
+              clinical-service workflows.
+            </p>
+            <p>
+              I designed application screens across OPD, registration,
+              inventory, NCDs, maternal health, and family planning, using
+              simplification, defaults, and validation guardrails to clarify
+              critical flows.
+            </p>
+            <p class="content-note">
+              This case summary is based on my résumé. The diagrams were
+              recreated for this portfolio to explain the workflow; they are not
+              production screenshots or archived research artifacts.
+            </p>
+          </section>
+          <section class="case-chapter" id="challenge">
+            <span class="eyebrow">02 / THE CHALLENGE</span>
+            <h2>Make the work<br />easier to understand.</h2>
+            <p>
+              Facility teams move between registration, consultations, records,
+              and supplies throughout the day. Repeated steps and form-heavy
+              interactions add friction to work that already demands attention.
+            </p>
+          </section>
+          <section class="case-chapter" id="decisions">
+            <span class="eyebrow">03 / DESIGN DECISIONS</span>
+            <h2>Structure before<br />surface detail.</h2>
+            <div class="insight-grid">
+              <article class="insight-card">
+                <span>01</span>
+                <h3>Keep the task connected</h3>
+                <p>
+                  Organize registration, service selection, and completion as a
+                  coherent workflow.
+                </p>
+              </article>
+              <article class="insight-card">
+                <span>02</span>
+                <h3>Reduce repeat effort</h3>
+                <p>
+                  Use considered defaults and a clearer sequence to remove
+                  unnecessary steps in critical tasks.
+                </p>
+              </article>
+              <article class="insight-card">
+                <span>03</span>
+                <h3>Support accurate entry</h3>
+                <p>
+                  Make required information, validation, and completion states
+                  understandable before handoff.
+                </p>
+              </article>
+            </div>
+          </section>
+          <section class="case-chapter" id="evolution">
+            <span class="eyebrow">04 / EXPLORE THE DESIGN THINKING</span>
+            <h2>Workflow.<br />Patterns. States.</h2>
+            <p>
+              Three illustrated views explain the approach. These are
+              explanatory reconstructions, not a claimed chronology of original
+              design iterations.
+            </p>
+            <div data-explorer>
+              <div
+                class="evolution-tabs"
+                role="tablist"
+                aria-label="Design explorer views"
+                hidden
+              >
+                <button
+                  role="tab"
+                  type="button"
+                  id="samasta-tab-early"
+                  aria-controls="samasta-early"
+                  aria-selected="true"
+                  tabindex="0"
+                >
+                  Workflow</button
+                ><button
+                  role="tab"
+                  type="button"
+                  id="samasta-tab-wire"
+                  aria-controls="samasta-wire"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Patterns</button
+                ><button
+                  role="tab"
+                  type="button"
+                  id="samasta-tab-ui"
+                  aria-controls="samasta-ui"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  States
+                </button>
+              </div>
+              <section
+                class="evolution-panel"
+                id="samasta-early"
+                aria-labelledby="samasta-tab-early"
+              >
+                <a
+                  class="media-link"
+                  href="%BASE_URL%assets/samasta-early.webp"
+                  data-gallery="study"
+                  data-caption="Samasta — Workflow illustration"
+                  ><img
+                    src="%BASE_URL%assets/samasta-early.webp"
+                    srcset="
+                      %BASE_URL%assets/samasta-early-600.webp  600w,
+                      %BASE_URL%assets/samasta-early.webp     1200w
+                    "
+                    sizes="(max-width: 767px) 100vw, 70vw"
+                    width="1200"
+                    height="800"
+                    alt="Samasta — Workflow illustration"
+                    loading="lazy" /><span
+                    class="zoom-indicator"
+                    aria-hidden="true"
+                    ><i data-lucide="maximize-2"></i></span
+                ></a>
+                <h3>Connecting the work</h3>
+                <p>
+                  A recreated workflow diagram that summarizes the scope
+                  described in my résumé.
+                </p>
+                <p>Register · Deliver a service · Complete the record</p>
+              </section>
+              <section
+                class="evolution-panel"
+                id="samasta-wire"
+                aria-labelledby="samasta-tab-wire"
+              >
+                <a
+                  class="media-link"
+                  href="%BASE_URL%assets/samasta-wire.webp"
+                  data-gallery="study"
+                  data-caption="Samasta — Patterns illustration"
+                  ><img
+                    src="%BASE_URL%assets/samasta-wire.webp"
+                    srcset="
+                      %BASE_URL%assets/samasta-wire-600.webp  600w,
+                      %BASE_URL%assets/samasta-wire.webp     1200w
+                    "
+                    sizes="(max-width: 767px) 100vw, 70vw"
+                    width="1200"
+                    height="800"
+                    alt="Samasta — Patterns illustration"
+                    loading="lazy" /><span
+                    class="zoom-indicator"
+                    aria-hidden="true"
+                    ><i data-lucide="maximize-2"></i></span
+                ></a>
+                <h3>A shared interaction language</h3>
+                <p>
+                  A portfolio illustration of the recurring design patterns
+                  discussed in this project.
+                </p>
+                <p>
+                  Consistent service entry · Clear form hierarchy · Visible
+                  completion state
+                </p>
+              </section>
+              <section
+                class="evolution-panel"
+                id="samasta-ui"
+                aria-labelledby="samasta-tab-ui"
+              >
+                <a
+                  class="media-link"
+                  href="%BASE_URL%assets/samasta-ui.webp"
+                  data-gallery="study"
+                  data-caption="Samasta — States illustration"
+                  ><img
+                    src="%BASE_URL%assets/samasta-ui.webp"
+                    srcset="
+                      %BASE_URL%assets/samasta-ui-600.webp  600w,
+                      %BASE_URL%assets/samasta-ui.webp     1200w
+                    "
+                    sizes="(max-width: 767px) 100vw, 70vw"
+                    width="1200"
+                    height="800"
+                    alt="Samasta — States illustration"
+                    loading="lazy" /><span
+                    class="zoom-indicator"
+                    aria-hidden="true"
+                    ><i data-lucide="maximize-2"></i></span
+                ></a>
+                <h3>Clarity through every state</h3>
+                <p>
+                  An explanatory state study for this case summary. It is not an
+                  original project wireframe or production screen.
+                </p>
+                <p>
+                  Required information · Validation feedback · Review and
+                  completion
+                </p>
+              </section>
+            </div>
+          </section>
+          <section class="case-chapter" id="solution">
+            <span class="eyebrow">05 / BRINGING IT TOGETHER</span>
+            <h2>Less friction in the flow of care.</h2>
+            <p>
+              A consistent family of service screens helps teams move through
+              registration, OPD, and supporting workflows. The design focuses on
+              clearer sequencing and useful feedback in high-throughput
+              settings.
+            </p>
+            <div
+              class="assembly"
+              aria-label="Recreated workflow, pattern, and state illustrations layered together"
+            >
+              <img
+                class="assembly-layer"
+                src="%BASE_URL%assets/samasta-early.webp"
+                width="1200"
+                height="800"
+                alt="Workflow illustration"
+                loading="lazy"
+              /><img
+                class="assembly-layer"
+                src="%BASE_URL%assets/samasta-wire.webp"
+                width="1200"
+                height="800"
+                alt="Patterns illustration"
+                loading="lazy"
+              /><img
+                class="assembly-layer"
+                src="%BASE_URL%assets/samasta-ui.webp"
+                width="1200"
+                height="800"
+                alt="States illustration"
+                loading="lazy"
+              /><span class="assembly-tag">WORKFLOW → PATTERNS → STATES</span>
+            </div>
+            <a
+              class="media-link"
+              href="%BASE_URL%assets/samasta-ui.webp"
+              data-gallery="study"
+              data-caption="Samasta — state illustration"
+              ><img
+                src="%BASE_URL%assets/samasta-ui.webp"
+                srcset="
+                  %BASE_URL%assets/samasta-ui-600.webp  600w,
+                  %BASE_URL%assets/samasta-ui.webp     1200w
+                "
+                sizes="(max-width: 767px) 100vw, 70vw"
+                width="1200"
+                height="800"
+                alt="Samasta — state illustration"
+                loading="lazy" /><span class="zoom-indicator" aria-hidden="true"
+                ><i data-lucide="maximize-2"></i></span
+            ></a>
+            <p class="content-note">
+              Open an illustration to inspect it. The image viewer supports zoom
+              and keyboard navigation.
+            </p>
+            <a class="text-link" href="%BASE_URL%contact/"
+              >Discuss this work <span aria-hidden="true">↗</span></a
+            >
+          </section>
+          <section class="case-chapter" id="outcomes">
+            <span class="eyebrow">06 / OUTCOMES &amp; CONTEXT</span>
+            <h2>What the work<br />contributed.</h2>
+            <div class="result-list">
+              <div>
+                <span aria-hidden="true">↗</span>
+                <div>
+                  <h3>100+</h3>
+                  <p>Application screens reported in the one-page résumé.</p>
+                </div>
+              </div>
+              <div>
+                <span aria-hidden="true">↗</span>
+                <div>
+                  <h3>~4 fewer steps</h3>
+                  <p>
+                    Reduction per critical flow reported in the detailed résumé.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <span aria-hidden="true">↗</span>
+                <div>
+                  <h3>~27%</h3>
+                  <p>
+                    Lower time to complete reported following workflow
+                    simplification.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="content-note">
+              Scope and improvements are reported in the supplied résumés. The
+              underlying task definitions, sample sizes, and measurement records
+              are not included, so these figures are presented as reported
+              project results.
+            </p>
+          </section>
+        </div>
+      </div>
+      <a class="next-project shell" href="%BASE_URL%projects/cho-soft/"
+        ><span class="eyebrow">KEEP EXPLORING / NEXT PROJECT</span>
+        <div>
+          <h2>CHO Soft.</h2>
+          <b aria-hidden="true">↗</b>
+        </div></a
+      >
+    </main>
+    <!-- include:footer -->
+    <!-- include:dialogs -->
+  </body>
+</html>
