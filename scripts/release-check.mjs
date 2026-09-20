@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
-const settings = JSON.parse(readFileSync("site.config.json", "utf8"));
+import { readSiteSettings } from "./site-settings.mjs";
+const settings = readSiteSettings();
 const issues = [];
 if (settings.preview) issues.push("The site is still marked as a preview.");
 if (!/^https:\/\/[^/]+$/.test(settings.origin))
@@ -38,7 +39,7 @@ function check(dir = ".") {
     else if (entry.name.endsWith(".html")) {
       const content = readFileSync(path, "utf8");
       if (
-        /YOUR NAME|TESTIMONIAL PLACEHOLDER|awaiting your|awaiting content|Introduction placeholder|CONCEPT PREVIEW|authorship awaiting review|YOUR DATES|Your most recent role|Your qualification/.test(
+        /YOUR NAME|TESTIMONIAL PLACEHOLDER|data-testimonial-placeholder|data-freelance-placeholder|To confirm|awaiting your|awaiting content|Introduction placeholder|CONCEPT PREVIEW|authorship awaiting review|YOUR DATES|Your most recent role|Your qualification/.test(
           content,
         )
       )

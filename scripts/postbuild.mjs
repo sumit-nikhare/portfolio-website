@@ -1,7 +1,13 @@
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
-const settings = JSON.parse(readFileSync("site.config.json", "utf8"));
-const base = process.env.BASE_PATH || settings.base || "/";
-const origin = settings.origin.replace(/\/$/, "");
+import {
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  mkdirSync,
+  rmSync,
+} from "node:fs";
+import { readSiteSettings } from "./site-settings.mjs";
+const settings = readSiteSettings();
+const { base, origin } = settings;
 const pages = [];
 function walk(dir = "dist", prefix = "") {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -35,9 +41,10 @@ for (const [previous, current] of Object.entries(redirects)) {
   );
 }
 writeFileSync("dist/.nojekyll", "");
-if (settings.preview || !origin)
+if (settings.preview || !origin) {
   writeFileSync("dist/robots.txt", "User-agent: *\nDisallow: /\n");
-else {
+  rmSync("dist/sitemap.xml", { force: true });
+} else {
   writeFileSync(
     "dist/robots.txt",
     `User-agent: *\nAllow: /\nSitemap: ${origin}${base}sitemap.xml\n`,
@@ -47,6 +54,11 @@ else {
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map((url) => `<url><loc>${url}</loc></url>`).join("")}</urlset>`,
   );
 }
+// Cloudflare Pages and Netlify honor this file; GitHub uses the HTML meta tags.
+writeFileSync(
+  "dist/_headers",
+  `${settings.preview ? "/*" : `${base}projects/sample-continuum/*`}\n  X-Robots-Tag: noindex, nofollow\n`,
+);
 console.log(
   `Prepared ${pages.length} pages. ${settings.preview ? "Preview is excluded from search indexing." : "Search metadata ready."}`,
 );

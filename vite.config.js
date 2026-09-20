@@ -2,7 +2,8 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve, relative } from "node:path";
-import settings from "./site.config.json";
+import { readSiteSettings } from "./scripts/site-settings.mjs";
+const settings = readSiteSettings();
 
 export function discoverPages(dir = ".", result = {}) {
   for (const item of readdirSync(dir, { withFileTypes: true })) {
@@ -30,7 +31,7 @@ export function discoverPages(dir = ".", result = {}) {
 }
 
 export default defineConfig({
-  base: process.env.BASE_PATH || settings.base,
+  base: settings.base,
   plugins: [
     tailwindcss(),
     {
@@ -52,8 +53,7 @@ export default defineConfig({
             readFileSync(resolve("src/partials", `${name}.html`), "utf8"),
           );
           const page = ctx.path.replace(/index\.html$/, "");
-          const origin = settings.origin.replace(/\/$/, "");
-          const base = process.env.BASE_PATH || settings.base;
+          const { origin, base } = settings;
           const escapeAttribute = (value) =>
             String(value)
               .replaceAll("&", "&amp;")

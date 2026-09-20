@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build && node scripts/postbuild.mjs",
+    "build:deploy": "npm run deploy:check && npm run check && npm run build && npm run check:build",
+    "deploy:check": "node scripts/deploy-check.mjs",
+    "check:build": "node scripts/check-build.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "check": "node --test tests/*.test.mjs",
     "art": "node scripts/create-profile-art.mjs",

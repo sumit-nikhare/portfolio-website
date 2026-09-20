@@ -1,5 +1,17 @@
 # Portfolio validation
 
+## Deployment preparation — 20 September 2026
+
+**Ready to upload as a public preview; no external deployment was performed.**
+
+- Added `npm run build:deploy` to run deployment preflight, Node tests, the production build, and a new compiled-output checker. Public preview builds preserve `preview: true` and all existing verification flags. Indexed releases still require final content review; unresolved project years, freelance slots, and testimonial prompts now fail that gate explicitly.
+- Centralized `SITE_ORIGIN` and `BASE_PATH` resolution for Vite, metadata, postbuild output, and checks. The GitHub workflow takes its host and repository path from `configure-pages`; root hosting remains the local default. Added Netlify build settings and a [deployment guide](docs/DEPLOYMENT.md) covering Cloudflare direct uploads without GitHub, Netlify, and GitHub Pages. No dependency, page design, content claim, hosting account, or repository visibility changed.
+- Preview builds retain HTML `noindex`, restrictive robots rules, and no sitemap. Generated `_headers` adds the matching response directive on Cloudflare/Netlify. Release postbuild excludes Continuum from the sitemap and keeps its separate noindex rule. A regression confirms stale release sitemaps are removed when rebuilding preview metadata. Indexing directives do not restrict access to a publicly deployed URL.
+- **60 Node tests pass**, including nine deployment regressions covering settings, URL/base validation, preview/final-release gates, missing résumé files, local asset/fragment checks, accessible ID references, and generated indexing rules. Both complete deployment builds pass: **942 local references across 26 HTML files** for `/`, and **961 references across 26 HTML files** for `https://sumit-nikhare.github.io/portfolio-website/`. GitHub canonical and social-image URLs were checked separately. The existing lazy Three.js chunk warning remains.
+- Local static HTTP smoke checks returned **200 for all 26 HTML routes plus four representative assets/downloads in each hosting layout** (60 successful responses total), including direct case-study URLs. HTML, PDF, and font content types were checked. Temporary smoke servers were closed. This verifies local static delivery, not provider configuration, browser rendering, or interactivity.
+- Created `artifacts/deployment/portfolio-preview.zip` from the final root build: **164 files, 2,764,883 ZIP bytes**, with `index.html` at the archive root. ZIP integrity and every archived file's bytes match `dist`; there is no source tree or repository metadata in the upload. The largest file is 537,087 bytes. File count and per-file size fit Cloudflare dashboard upload limits. Build logs, the package checksum, GitHub-path output, and HTTP results are retained beside the ZIP; `artifacts/` stays ignored by Git.
+- **Browser visual review, execution of the 96 prepared browser scenarios, and current Lighthouse measurements remain pending** because no browser was available in the latest environment discovery. No new accessibility or performance score is claimed. Nothing was committed, pushed, or published during this preparation.
+
 ## Site-wide quality pass — 19 September 2026
 
 **Source fixes and automated checks complete; visual/browser sign-off remains pending.**

@@ -4,7 +4,7 @@ A static product-design portfolio with an interactive Three.js sculpture, seven 
 
 The site contains Sumit’s identity, verified contact details, career history, education, skills, and selected projects from the supplied résumés. The current designation is **Product Designer at Khushi Baby, April 2026–present**. Senior UI/UX Designer remains the historical role for January 2023–March 2026.
 
-The site stays in **local preview** until publication review. Project visuals are clearly labeled workflow illustrations; the original healthcare captures were not copied. Metrics retain their résumé context. Blog essays are newly written design notes. The homepage reserves two clearly labeled testimonial placeholders without fabricated quotes or attribution; the separate Continuum sample contains one explicitly fictional teaching quote. See [docs/PROFILE-SOURCES.md](docs/PROFILE-SOURCES.md) for content provenance.
+The site stays in **preview mode** until final content review and can be deployed as a public preview with search indexing disabled. Project visuals are clearly labeled workflow illustrations; the original healthcare captures were not copied. Metrics retain their résumé context. Blog essays are newly written design notes. The homepage reserves two clearly labeled testimonial placeholders without fabricated quotes or attribution; the separate Continuum sample contains one explicitly fictional teaching quote. See [docs/PROFILE-SOURCES.md](docs/PROFILE-SOURCES.md) for content provenance.
 
 ## Design standard
 
@@ -14,7 +14,7 @@ Preserve a minimal visual identity and aim for award-caliber craft in every chan
 
 The current source pass improves keyboard feedback and pale-surface focus contrast, mobile input/control sizing, motion preference restoration, collection history cleanup, SVG playback lifecycle, and deferred menu-image loading. The existing page structure, content, art direction, and themes are preserved.
 
-The latest checks pass **51 Node tests**, root/subdirectory production builds, and static link/markup validation. **96 browser scenarios are prepared but have not been executed against these refinements.** Local preview can now start; visual review and Lighthouse measurements still require a connected browser. See [VALIDATION.md](VALIDATION.md) for the exact evidence and pending work. Publication still requires real project/freelance evidence and authentic testimonial content; preview mode remains enabled.
+The latest checks pass **60 Node tests**, root/subdirectory production builds, and static link/markup validation. **96 browser scenarios are prepared but have not been executed against these refinements.** Local preview can now start; visual review and Lighthouse measurements still require a connected browser. See [VALIDATION.md](VALIDATION.md) for the exact evidence and pending work. A final indexed release still requires review of project/freelance evidence, testimonials, and articles; labeled preview deployment is available now.
 
 ## Homepage structure
 
@@ -179,18 +179,18 @@ Replace the two clearly labeled writing prompts in `#testimonials` with authenti
 
 `<!-- include:header -->`, `<!-- include:footer -->`, and `<!-- include:dialogs -->` are expanded by Vite into ordinary HTML, so content and the native fallback menu do not rely on JavaScript. `%BASE_URL%` keeps asset and page URLs working both at a domain root and under a GitHub project path.
 
-## Publish free with GitHub Pages
+## Deploy for free
 
-1. Create a public GitHub repository and push this folder to its `main` branch.
-2. In the repository, open **Settings → Pages → Build and deployment**, and select **GitHub Actions**.
-3. Review the project summaries, qualified metrics, approved imagery, and design notes. Original playground concepts and labeled explanatory diagrams can remain.
-4. Set `origin` in `site.config.json` to `https://YOUR-USERNAME.github.io` (host only). Set `base` to `/REPOSITORY-NAME/`, or `/` for a `YOUR-USERNAME.github.io` repository.
-5. Set `preview` to `false`, and complete the remaining content-verification flags after reviewing project material, article authorship, and the references section. The contact form’s “Your name” label describes the visitor and should remain.
-6. Run `npm run release:check`, then commit and push. The included workflow builds and publishes the site. Later pushes to `main` publish updates automatically.
+**Cloudflare Pages is the recommended option without GitHub.** Upload the prepared `artifacts/deployment/portfolio-preview.zip` or a fresh `dist` folder through its dashboard. Netlify also supports folder uploads. Both provide a free host-owned address. Full setup steps, free-plan limitations, updates, and GitHub instructions are in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-The content-readiness check intentionally fails while preview mode, the public URL, and final publication review are pending. It does not block local builds. `noindex` metadata and a restrictive robots file keep preview content out of search results. The release build creates a sitemap when a real origin is configured.
+```sh
+npm ci
+npm run build:deploy
+```
 
-Free GitHub Pages hosting requires a public repository. Your source and committed assets will be visible. A custom domain is optional and is not part of the free setup.
+This runs deployment checks, Node tests, the production build, and built-output validation. Upload **`dist`**, not the source project. Preview deployment keeps labels and indexing restrictions intact; `npm run release:check` continues to enforce the stricter final-content review. Preview restrictions do not make a public link private.
+
+For GitHub Pages, select **Settings → Pages → GitHub Actions**, then push the prepared workflow to `main`. It automatically supplies the correct hosting URL and repository path. `SITE_ORIGIN` and `BASE_PATH` can override local defaults for other hosts; `netlify.toml` supplies Netlify's build settings. No account or public deployment has been created during this preparation.
 
 ## Interactions and fallbacks
 
