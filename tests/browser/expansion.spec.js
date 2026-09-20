@@ -1,12 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-// Loader holds are tested separately in motion.spec.js.
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() =>
-    localStorage.setItem("intent-portfolio-visits", "1"),
-  );
-});
+// Shared page-entry behavior is tested in motion.spec.js.
 const mainPages = ["/about/", "/contact/", "/resume/", "/work/", "/blogs/"];
 const newCases = ["ai-enabled", "abdm-abha", "anarock", "tarp"];
 const articles = [
@@ -19,9 +14,13 @@ test("new pages fit mobile, tablet, desktop, and wide screens", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  for (const width of [360, 834, 1440, 1920]) {
+  for (const width of [360, 390, 834, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of [...mainPages, "/blogs/the-next-useful-action/"]) {
+    for (const route of [
+      ...mainPages,
+      "/playground/",
+      "/blogs/the-next-useful-action/",
+    ]) {
       await page.goto(route);
       await expect(page.locator("h1")).toBeVisible();
       expect(
@@ -33,21 +32,81 @@ test("new pages fit mobile, tablet, desktop, and wide screens", async ({
     }
   }
 });
-test("About has six sections and links to résumé and contact", async ({
+test("About follows the brief with verified experience, five capability groups, and résumé access", async ({
   page,
 }) => {
   await page.goto("/about/");
-  await expect(page.locator("main > section")).toHaveCount(6);
-  await page.getByRole("link", { name: "The résumé version" }).click();
+  await expect(page.locator("main > section")).toHaveCount(7);
+  expect(
+    await page
+      .locator("[data-about-section]")
+      .evaluateAll((sections) =>
+        sections.map((section) => section.dataset.aboutSection),
+      ),
+  ).toEqual([
+    "hero",
+    "professional-story",
+    "experience",
+    "capabilities",
+    "beyond-work",
+    "resume",
+    "contact",
+  ]);
+  await expect(page.locator(".principle-grid")).toHaveCount(0);
+  await expect(page.locator("#principles a")).toHaveAttribute(
+    "href",
+    "/#philosophy",
+  );
+  await expect(page.locator(".capability-list h3")).toHaveText([
+    "Product",
+    "Experience",
+    "Craft",
+    "Systems",
+    "Collaboration",
+  ]);
+  await expect(page.locator(".journey-list article")).toHaveCount(4);
+  await expect(page.locator("#outside-work")).toContainText("anime");
+  await expect(page.locator("#resume a[download]")).toHaveAttribute(
+    "href",
+    /Resume-Sumit-Nikhare-Product-Designer\.pdf$/,
+  );
+  await expect(page.locator('#say-hello a[href^="mailto:"]')).toHaveAttribute(
+    "href",
+    "mailto:sumit.v.nikhare@gmail.com",
+  );
+  await page
+    .locator("#resume")
+    .getByRole("link", { name: "View résumé", exact: true })
+    .click();
   await expect(page).toHaveURL(/\/resume\/$/);
   await page.getByRole("link", { name: "Contact page", exact: true }).click();
   await expect(page).toHaveURL(/\/contact\/$/);
 });
-test("seven-project filters, list view, URL state and case links work", async ({
+test("Work separates featured, freelance, additional and archive entries while filters and history work", async ({
   page,
 }) => {
   await page.goto("/work/");
   await expect(page.locator("[data-collection-item]")).toHaveCount(7);
+  expect(
+    await page
+      .locator("[data-work-section]")
+      .evaluateAll((sections) =>
+        sections.map((section) => section.dataset.workSection),
+      ),
+  ).toEqual(["intro", "featured", "freelance", "additional", "archive"]);
+  await expect(page.locator("#featured [data-collection-item]")).toHaveCount(3);
+  await expect(page.locator("#additional [data-collection-item]")).toHaveCount(
+    2,
+  );
+  await expect(page.locator("#archive [data-collection-item]")).toHaveCount(2);
+  await expect(page.locator("[data-work-year]")).toHaveText(
+    Array(7).fill("To confirm"),
+  );
+  await expect(page.locator("[data-freelance-placeholder]")).toHaveCount(3);
+  await expect(page.locator("[data-freelance-placeholder] a")).toHaveCount(0);
+  await expect(page.locator("#freelance-preview-note")).toContainText(
+    "Preview placeholders",
+  );
   for (const [category, count] of [
     ["mobile", 2],
     ["systems", 2],
@@ -59,6 +118,12 @@ test("seven-project filters, list view, URL state and case links work", async ({
     await expect(page.locator("[data-collection-item]:visible")).toHaveCount(
       count,
     );
+    await expect(
+      page.locator("[data-freelance-placeholder]:visible"),
+    ).toHaveCount(3);
+    await expect(page.locator("[data-collection-count]")).toHaveText(
+      `Showing ${count} of 7 employment projects`,
+    );
   }
   await page.getByRole("button", { name: "List view", exact: true }).click();
   await expect(page.locator("[data-collection-grid]")).toHaveClass(/is-list/);
@@ -67,10 +132,26 @@ test("seven-project filters, list view, URL state and case links work", async ({
     page.getByRole("button", { name: "List view", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await page.locator('[data-filter="systems"]').click();
+  await expect(page.locator("#featured")).toBeHidden();
+  await expect(page.locator("#additional")).toBeHidden();
+  await expect(page.locator("#archive")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "List view", exact: true }),
+  ).toBeDisabled();
   await page.locator('[data-project-link="anarock"]').click();
   await expect(page).toHaveURL(/\/projects\/anarock\/$/);
   await page.goBack();
   await expect(page.locator("[data-collection-item]:visible")).toHaveCount(2);
+  await expect(
+    page.locator("[data-freelance-placeholder]:visible"),
+  ).toHaveCount(3);
+  await page.locator('[data-filter="all"]').click();
+  await expect(page.locator("[data-collection-group]:visible")).toHaveCount(3);
+  await expect(
+    page.getByRole("button", { name: "List view", exact: true }),
+  ).toBeEnabled();
+  await page.locator('#freelance a[href="/contact/"]').click();
+  await expect(page).toHaveURL(/\/contact\/$/);
 });
 test("all seven case studies form one navigation chain and new galleries work", async ({
   page,
@@ -222,9 +303,24 @@ test("all new content stays available without JavaScript", async ({
     viewport: { width: 390, height: 844 },
   });
   const page = await context.newPage();
+  await page.goto("http://127.0.0.1:4173/about/");
+  await expect(page.locator("[data-about-section]:visible")).toHaveCount(7);
+  await expect(page.locator(".capability-list h3:visible")).toHaveCount(5);
+  await page.getByRole("link", { name: "My story", exact: true }).click();
+  await expect(page).toHaveURL(/\/about\/#story$/);
+  await expect(page.locator("#story")).toBeInViewport();
+  await expect(page.locator("#resume a[download]")).toHaveCount(1);
   await page.goto("http://127.0.0.1:4173/work/");
   await expect(page.locator("[data-collection-item]:visible")).toHaveCount(7);
-  await expect(page.locator(".footer-page-nav a")).toHaveCount(6);
+  await expect(page.locator("[data-work-section]:visible")).toHaveCount(5);
+  await expect(
+    page.locator("[data-freelance-placeholder]:visible"),
+  ).toHaveCount(3);
+  await page
+    .getByRole("link", { name: "Explore freelance work", exact: true })
+    .click();
+  await expect(page.locator("#freelance")).toBeInViewport();
+  await expect(page.locator(".footer-page-nav a")).toHaveCount(8);
   await page.goto("http://127.0.0.1:4173/blogs/");
   await expect(page.locator("[data-collection-item]:visible")).toHaveCount(3);
   await page.goto("http://127.0.0.1:4173/contact/");

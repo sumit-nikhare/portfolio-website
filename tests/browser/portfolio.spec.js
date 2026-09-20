@@ -1,12 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-// Loader holds are tested separately in motion.spec.js.
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() =>
-    localStorage.setItem("intent-portfolio-visits", "1"),
-  );
-});
+// Shared page-entry behavior is tested in motion.spec.js.
 
 test("homepage has no overflow at mobile, tablet, desktop, and wide sizes", async ({
   page,
@@ -44,16 +39,18 @@ test("3D scene initializes, responds to scroll, and cover distortion has no rend
   await page.mouse.move(1050, 430);
   await page.evaluate(() => window.scrollTo(0, 600));
   await expect(page.locator(".pin-spacer")).toBeAttached();
-  await page.locator('[data-project-link="chip-2"]').scrollIntoViewIfNeeded();
-  await page.locator('[data-project-link="chip-2"]').hover();
+  await page
+    .locator('[data-project-link="sample-continuum"]')
+    .scrollIntoViewIfNeeded();
+  await page.locator('[data-project-link="sample-continuum"]').hover();
   await expect(
-    page.locator('[data-project-link="chip-2"] canvas'),
+    page.locator('[data-project-link="sample-continuum"] canvas'),
   ).toBeAttached();
   await page.waitForTimeout(300);
   expect(errors).toEqual([]);
-  await expect(page.locator('[data-project-link="chip-2"] canvas')).toHaveCount(
-    0,
-  );
+  await expect(
+    page.locator('[data-project-link="sample-continuum"] canvas'),
+  ).toHaveCount(0);
 });
 
 test("motion preference disables graphics and persists after navigation", async ({
@@ -199,6 +196,33 @@ test("playground typography, component controls, and SVG playback work", async (
 }) => {
   await page.goto("/playground/");
   await expect(page.locator(".site-loader")).not.toBeVisible();
+  await expect(page.locator("[data-playground-section]")).toHaveCount(3);
+  expect(
+    await page
+      .locator("[data-playground-section]")
+      .evaluateAll((sections) =>
+        sections.map((section) => section.dataset.playgroundSection),
+      ),
+  ).toEqual(["intro", "grid", "detail"]);
+  await expect(page.locator("[data-experiment-link]")).toHaveCount(4);
+  await expect(page.locator("[data-experiment-detail]")).toHaveCount(4);
+  for (const id of ["onboarding", "typography", "components", "svg-motion"]) {
+    await expect(page.locator(`#${id} .experiment-story dt`)).toHaveText([
+      "Idea",
+      "Experiment",
+      "Result",
+    ]);
+    const preview = page.locator(`[data-experiment-link][href="#${id}"]`);
+    await preview.focus();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    await expect(page.locator(`#${id}`)).toBeFocused();
+    await page.locator(`#${id} .experiment-return`).click();
+    await expect(page.locator("#experiments")).toBeFocused();
+  }
+  await page.locator('[data-experiment-link][href="#typography"]').click();
+  await page.reload();
+  await expect(page).toHaveURL(/#typography$/);
   await page.getByRole("textbox", { name: "Your words" }).fill("<hello>");
   await expect(page.locator("[data-type-output]")).toHaveText("<hello>");
   await page.getByRole("slider", { name: "Font weight" }).fill("700");
@@ -233,12 +257,12 @@ test("project navigation and browser history remain ordinary working links", asy
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await page.locator('[data-project-link="chip-2"]').click();
-  await expect(page).toHaveURL(/\/projects\/chip-2\/$/);
+  await page.locator('[data-project-link="sample-continuum"]').click();
+  await expect(page).toHaveURL(/\/projects\/sample-continuum\/$/);
   await page.goBack();
   await expect(page).toHaveURL(/:4173\/$/);
   await page.goForward();
-  await expect(page.locator(".case-hero h1")).toHaveText("CHIP-2.");
+  await expect(page.locator(".case-hero h1")).toHaveText("Continuum.");
 });
 
 test("no-JavaScript mode preserves content, mobile navigation, media links, and demo explanation", async ({
@@ -250,14 +274,30 @@ test("no-JavaScript mode preserves content, mobile navigation, media links, and 
   });
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:4173/");
-  await expect(page.locator(".desktop-nav")).toBeVisible();
+  await page.locator(".static-menu > summary").click();
+  await expect(page.locator(".static-menu nav")).toBeVisible();
+  await expect(page.locator(".static-menu nav a")).toHaveCount(6);
   await expect(page.locator(".sculpture-fallback")).toBeVisible();
+  await expect(page.locator("#main > section")).toHaveCount(8);
+  await expect(page.locator("[data-home-experiment]")).toHaveCount(3);
+  await expect(page.locator("#testimonials-note")).toContainText(
+    "Preview placeholders",
+  );
+  await expect(page.locator("#about img")).toBeVisible();
   await page.goto("http://127.0.0.1:4173/projects/chip-2/");
   await expect(page.locator("#chip-2-early")).toBeVisible();
   await expect(page.locator("#chip-2-wire")).toBeVisible();
   await expect(page.locator("#chip-2-ui")).toBeVisible();
   await page.goto("http://127.0.0.1:4173/playground/");
+  await expect(page.locator("[data-playground-section]")).toHaveCount(3);
+  await expect(page.locator("[data-experiment-link]")).toHaveCount(4);
+  await expect(page.locator(".experiment-story")).toHaveCount(4);
+  await page.locator('[data-experiment-link][href="#onboarding"]').click();
+  await expect(page).toHaveURL(/#onboarding$/);
   await expect(page.locator("[data-demo-static]")).toBeVisible();
+  await expect(page.locator("[data-demo-interactive]")).toBeHidden();
+  await page.locator("#onboarding .experiment-return").click();
+  await expect(page.locator("#experiments")).toBeFocused();
   await context.close();
 });
 

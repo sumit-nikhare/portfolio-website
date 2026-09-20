@@ -9,15 +9,10 @@ const browser = await chromium.launch({
 });
 try {
   const page = await browser.newPage({ reducedMotion: "reduce" });
-  // The five-second loader is covered by browser tests, not part of a PDF.
-  await page.addInitScript(() =>
-    localStorage.setItem("intent-portfolio-visits", "1"),
-  );
   await page.goto(
     `${process.env.PREVIEW_URL || "http://127.0.0.1:4173"}/resume/`,
     { waitUntil: "networkidle" },
   );
-  await page.locator(".site-loader").waitFor({ state: "hidden" });
   await page.evaluate(async () => {
     await document.fonts.ready;
     document.title = "Sumit Nikhare — Product Designer";

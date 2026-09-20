@@ -2,6 +2,8 @@
 
 Researched on 13 September 2026. These recommendations are applied to a personal product-design portfolio for hiring teams and freelance clients. Section counts below are editorial decisions for this site, not universal rules or guarantees of an award.
 
+> Implementation note, 19 September 2026: this research predates the user’s complete IA brief. That brief governs the current restructuring. Home now follows its nine parts; About now follows its seven required sections, with the optional Recognition section omitted and philosophy owned by Home. Work now separates featured employment projects, freelance previews, additional summaries, and an archive. Playground now follows Introduction → Experiment Grid → Experiment Detail, with four existing explorations and visible Idea / Experiment / Result notes. Legacy concept names below describe the earlier research stage, not the current project collection.
+
 ## About: keep six sections
 
 1. **Introduction:** role, a short positioning statement, and space for a real portrait.

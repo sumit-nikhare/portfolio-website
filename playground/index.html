@@ -13,7 +13,7 @@
     <meta property="og:title" content="Playground — Sumit Nikhare" />
     <meta
       property="og:description"
-      content="Thoughtful products. Playful experiences. An original portfolio concept."
+      content="Four original explorations in interaction, typography, component craft, and motion. Read the idea, try the experiment, see the result."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="%BASE_URL%og.png" />
@@ -28,35 +28,179 @@
     />
     {{canonical}}
     <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/playground.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body data-page="playground" style="--accent: #d2ff5a">
     <!-- include:header -->
     <main id="main">
-      <section class="play-hero shell">
+      <!-- Brief S1 / Introduction -->
+      <section
+        class="play-hero shell"
+        id="introduction"
+        data-playground-section="intro"
+        aria-labelledby="playground-title"
+      >
         <span class="eyebrow"
-          ><span class="section-number">PLAYGROUND /</span> ORIGINAL
+          ><span class="section-number">01 /</span> PLAYGROUND · ORIGINAL
           EXPLORATIONS</span
         >
-        <h1>FOLLOW THE<br /><span class="serif-word">what if.</span></h1>
+        <h1 id="playground-title">
+          FOLLOW THE<br /><span class="serif-word">what if.</span>
+        </h1>
         <div class="play-hero-bottom">
           <p>
-            A little space to experiment.<br />Four original studies in
-            interaction, type, and motion. Go ahead. Try things.
+            Small ideas in interaction, type, and motion. Four original
+            explorations, made to be tried. No client work or measured outcomes.
           </p>
-          <a class="text-link" href="#onboarding"
-            >Start playing <span aria-hidden="true">↓</span></a
+          <a class="text-link" href="#experiments"
+            >Explore the experiments <span aria-hidden="true">↓</span></a
           >
         </div>
       </section>
-      <div class="shell">
-        <section class="play-section" id="onboarding">
+      <!-- Brief S2 / Experiment Grid -->
+      <section
+        class="shell editorial-section"
+        id="experiments"
+        data-playground-section="grid"
+        aria-labelledby="experiments-title"
+        tabindex="-1"
+      >
+        <div class="editorial-heading">
+          <div>
+            <span class="eyebrow"
+              ><span class="section-number">02 /</span> EXPERIMENT GRID</span
+            >
+            <h2 id="experiments-title">Pick a curiosity.</h2>
+          </div>
+          <p>
+            Four small studies. Each begins with a question and ends with
+            something you can try.
+          </p>
+        </div>
+        <div class="experiment-grid">
+          <a
+            class="experiment-tile"
+            href="#onboarding"
+            data-experiment-link
+            aria-labelledby="onboarding-preview-title"
+          >
+            <div
+              class="experiment-thumbnail thumb-onboarding"
+              aria-hidden="true"
+            >
+              <span class="thumb-note">01 → 02 → 03</span>
+              <div class="thumb-sprout">
+                <span>✳</span><strong>A fresh<br />start.</strong><i></i><i></i
+                ><i></i>
+              </div>
+            </div>
+            <div class="experiment-tile-meta">
+              <span class="eyebrow">01 / Interaction · Prototype</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <h3 id="onboarding-preview-title">A fresh start.</h3>
+            <p>Make the first useful choice feel manageable.</p> </a
+          ><a
+            class="experiment-tile"
+            href="#typography"
+            data-experiment-link
+            aria-labelledby="typography-preview-title"
+          >
+            <div class="experiment-thumbnail thumb-type" aria-hidden="true">
+              <span class="thumb-note">ONE FONT / MANY VOICES</span
+              ><span class="thumb-letters"><span>Aa</span><span>Aa</span></span
+              ><span class="thumb-type-axis">300 <i></i> 700</span>
+            </div>
+            <div class="experiment-tile-meta">
+              <span class="eyebrow">02 / Typography · Visual</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <h3 id="typography-preview-title">Words with personality.</h3>
+            <p>Give one sentence several different voices.</p> </a
+          ><a
+            class="experiment-tile"
+            href="#components"
+            data-experiment-link
+            aria-labelledby="components-preview-title"
+          >
+            <div
+              class="experiment-thumbnail thumb-component"
+              aria-hidden="true"
+            >
+              <span class="thumb-note">SAME CONTENT / DIFFERENT CHARACTER</span>
+              <div class="thumb-component-pair">
+                <div><span>✳</span><i></i><i></i><b>Save ↗</b></div>
+                <div><span>✳</span><i></i><i></i><b>Saved ✓</b></div>
+              </div>
+            </div>
+            <div class="experiment-tile-meta">
+              <span class="eyebrow">03 / Interaction · Code</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <h3 id="components-preview-title">
+              The feeling is in the details.
+            </h3>
+            <p>Explore how a small component changes character.</p> </a
+          ><a
+            class="experiment-tile"
+            href="#svg-motion"
+            data-experiment-link
+            aria-labelledby="svg-motion-preview-title"
+          >
+            <div class="experiment-thumbnail thumb-motion" aria-hidden="true">
+              <span class="thumb-note">ONE PATH / A LITTLE TIMING</span
+              ><svg viewBox="0 0 600 260" focusable="false">
+                <path
+                  d="M40 180 C90 180 70 55 150 55 S230 215 300 180 S310 30 390 65 S450 225 560 110"
+                />
+                <circle cx="390" cy="65" r="7" /></svg
+              ><span class="thumb-motion-caption"
+                >BEGIN <span>FOLLOW THE LINE →</span></span
+              >
+            </div>
+            <div class="experiment-tile-meta">
+              <span class="eyebrow">04 / Motion · Visual</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <h3 id="svg-motion-preview-title">A line of curiosity.</h3>
+            <p>Make a single path reveal its own rhythm.</p>
+          </a>
+        </div>
+      </section>
+      <!-- Brief S3 / Experiment Detail -->
+      <section
+        class="shell editorial-section experiment-details"
+        id="experiment-details"
+        data-playground-section="detail"
+        aria-labelledby="experiment-details-title"
+      >
+        <div class="editorial-heading">
+          <div>
+            <span class="eyebrow"
+              ><span class="section-number">03 /</span> EXPERIMENT DETAIL</span
+            >
+            <h2 id="experiment-details-title">An idea. Made tangible.</h2>
+          </div>
+          <p>
+            Idea, experiment, result. A little context beside each working
+            exploration.
+          </p>
+        </div>
+
+        <article
+          class="play-section"
+          id="onboarding"
+          data-experiment-detail
+          aria-labelledby="onboarding-title"
+          tabindex="-1"
+        >
           <div class="experiment-heading">
             <div>
               <span class="eyebrow experiment-label"
                 >EXPERIMENT 001 / INTERACTION</span
               >
-              <h2>A fresh start.</h2>
+              <h3 id="onboarding-title">A fresh start.</h3>
             </div>
             <p>
               A three-step onboarding concept that asks one useful question. An
@@ -65,7 +209,7 @@
           </div>
           <div class="experiment-box" data-demo>
             <div data-demo-static class="demo-static">
-              <h3>A fresh start — the flow</h3>
+              <h4>A fresh start — the flow</h4>
               <ol>
                 <li>Welcome: an introduction to a calmer workspace.</li>
                 <li>
@@ -97,7 +241,9 @@
                 <section class="demo-panel" data-demo-panel="0">
                   <span class="eyebrow">01 / A PLACE TO BEGIN</span>
                   <div class="demo-welcome-icon" aria-hidden="true">✳</div>
-                  <h3 tabindex="-1">Make room for<br />something good.</h3>
+                  <h4 tabindex="-1" data-demo-heading>
+                    Make room for<br />something good.
+                  </h4>
                   <p>
                     Your ideas deserve a little breathing room.<br />Let’s make
                     a space that feels like you.
@@ -105,7 +251,9 @@
                 </section>
                 <section class="demo-panel" data-demo-panel="1" hidden>
                   <span class="eyebrow">02 / FIND YOUR FOCUS</span>
-                  <h3 tabindex="-1" id="focus-title">What brings you here?</h3>
+                  <h4 tabindex="-1" data-demo-heading id="focus-title">
+                    What brings you here?
+                  </h4>
                   <p>Choose one focus. You can always change your mind.</p>
                   <fieldset
                     class="demo-options"
@@ -146,7 +294,9 @@
                 <section class="demo-panel" data-demo-panel="2" hidden>
                   <span class="eyebrow">03 / ALL SET</span>
                   <div class="success-check" aria-hidden="true">✓</div>
-                  <h3 tabindex="-1">Good things<br />start here.</h3>
+                  <h4 tabindex="-1" data-demo-heading>
+                    Good things<br />start here.
+                  </h4>
                   <p>A little intention makes all the difference.</p>
                   <div class="demo-summary" data-demo-summary></div>
                   <p class="content-note" style="margin-top: 18px">
@@ -164,14 +314,46 @@
               </div>
             </div>
           </div>
-        </section>
-        <section class="play-section" id="typography">
+          <dl
+            class="experiment-story"
+            aria-label="A fresh start. — experiment notes"
+          >
+            <div>
+              <dt>Idea</dt>
+              <dd>One preference at a time, with room to go back.</dd>
+            </div>
+            <div>
+              <dt>Experiment</dt>
+              <dd>
+                Move through an introduction, a required focus choice, and
+                confirmation. Go Back to check that your choice stays selected.
+              </dd>
+            </div>
+            <div>
+              <dt>Result</dt>
+              <dd>
+                The prototype confirms the chosen focus and can start again. It
+                creates no account and saves no data.
+              </dd>
+            </div>
+          </dl>
+          <a class="text-link experiment-return" href="#experiments"
+            >Back to experiment grid <span aria-hidden="true">↑</span></a
+          >
+        </article>
+        <article
+          class="play-section"
+          id="typography"
+          data-experiment-detail
+          aria-labelledby="typography-title"
+          tabindex="-1"
+        >
           <div class="experiment-heading">
             <div>
               <span class="eyebrow experiment-label"
                 >EXPERIMENT 002 / TYPOGRAPHY</span
               >
-              <h2>Words with personality.</h2>
+              <h3 id="typography-title">Words with personality.</h3>
             </div>
             <p>
               A variable font, a few controls, and a surprising amount of
@@ -221,14 +403,47 @@
               /></label>
             </div>
           </div>
-        </section>
-        <section class="play-section" id="components">
+          <dl
+            class="experiment-story"
+            aria-label="Words with personality. — experiment notes"
+          >
+            <div>
+              <dt>Idea</dt>
+              <dd>Use the same words to explore a different tone.</dd>
+            </div>
+            <div>
+              <dt>Experiment</dt>
+              <dd>
+                Edit the phrase, then change the font weight and letter spacing.
+                Compare a light, open setting with a heavier, tighter one.
+              </dd>
+            </div>
+            <div>
+              <dt>Result</dt>
+              <dd>
+                A live type specimen changes without switching fonts. This
+                demonstrates expression, not a tested improvement in
+                readability.
+              </dd>
+            </div>
+          </dl>
+          <a class="text-link experiment-return" href="#experiments"
+            >Back to experiment grid <span aria-hidden="true">↑</span></a
+          >
+        </article>
+        <article
+          class="play-section"
+          id="components"
+          data-experiment-detail
+          aria-labelledby="components-title"
+          tabindex="-1"
+        >
           <div class="experiment-heading">
             <div>
               <span class="eyebrow experiment-label"
                 >EXPERIMENT 003 / COMPONENT CRAFT</span
               >
-              <h2>The feeling is in the details.</h2>
+              <h3 id="components-title">The feeling is in the details.</h3>
             </div>
             <p>
               Adjust a small component’s shape and spacing. Then try its save
@@ -238,7 +453,7 @@
           <div class="experiment-box component-stage">
             <article class="component-preview" data-component-card>
               <span class="demo-welcome-icon" aria-hidden="true">✳</span>
-              <h3>Good things,<br />collected.</h3>
+              <h4>Good things,<br />collected.</h4>
               <p>A home for the ideas you want to come back to.</p>
               <button
                 data-save-component
@@ -272,14 +487,47 @@
               </p>
             </div>
           </div>
-        </section>
-        <section class="play-section" id="svg-motion">
+          <dl
+            class="experiment-story"
+            aria-label="The feeling is in the details. — experiment notes"
+          >
+            <div>
+              <dt>Idea</dt>
+              <dd>Change the feel without changing the content.</dd>
+            </div>
+            <div>
+              <dt>Experiment</dt>
+              <dd>
+                Adjust the corners and spacing of a collection card. Toggle Save
+                to compare its available and selected states.
+              </dd>
+            </div>
+            <div>
+              <dt>Result</dt>
+              <dd>
+                One component supports two densities and an explicit saved
+                state. The collection is a local demonstration; nothing is
+                stored.
+              </dd>
+            </div>
+          </dl>
+          <a class="text-link experiment-return" href="#experiments"
+            >Back to experiment grid <span aria-hidden="true">↑</span></a
+          >
+        </article>
+        <article
+          class="play-section"
+          id="svg-motion"
+          data-experiment-detail
+          aria-labelledby="svg-motion-title"
+          tabindex="-1"
+        >
           <div class="experiment-heading">
             <div>
               <span class="eyebrow experiment-label"
                 >EXPERIMENT 004 / SVG MOTION</span
               >
-              <h2>A line of curiosity.</h2>
+              <h3 id="svg-motion-title">A line of curiosity.</h3>
             </div>
             <p>
               One path. A little timing. Follow the line as it traces its way
@@ -331,18 +579,46 @@
               </p>
             </div>
           </div>
-        </section>
-        <div class="play-notice">
+          <dl
+            class="experiment-story"
+            aria-label="A line of curiosity. — experiment notes"
+          >
+            <div>
+              <dt>Idea</dt>
+              <dd>Use movement to explain where a line leads.</dd>
+            </div>
+            <div>
+              <dt>Experiment</dt>
+              <dd>
+                Play the path, pause partway, then resume or replay. The moving
+                point keeps its place along the same curve.
+              </dd>
+            </div>
+            <div>
+              <dt>Result</dt>
+              <dd>
+                Timing turns a static line into a sequence. Reduced motion keeps
+                the complete drawing visible without requiring playback.
+              </dd>
+            </div>
+          </dl>
+          <a class="text-link experiment-return" href="#experiments"
+            >Back to experiment grid <span aria-hidden="true">↑</span></a
+          >
+        </article>
+        <p class="play-notice">
           All four experiments are original demonstration concepts. They do not
           represent a client engagement, launched product, or measured business
           outcome.
-        </div>
-        <section class="section-space">
+        </p>
+        <div class="experiment-end">
           <a href="%BASE_URL%#work" class="text-link"
             >Back to selected work <span aria-hidden="true">↗</span></a
+          ><a href="#experiments" class="text-link"
+            >Explore another experiment <span aria-hidden="true">↑</span></a
           >
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
     <!-- include:footer -->
     <!-- include:dialogs -->

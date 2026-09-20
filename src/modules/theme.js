@@ -23,6 +23,7 @@ export function initTheme() {
       button.setAttribute("title", `Switch to ${next} theme`);
       button.querySelector("[data-theme-label]").textContent = label;
     });
+    document.dispatchEvent(new Event("portfolio:theme"));
   };
   document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
     button.addEventListener("click", () => {

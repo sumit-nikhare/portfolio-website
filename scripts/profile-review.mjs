@@ -15,9 +15,6 @@ try {
     reducedMotion: "reduce",
     deviceScaleFactor: 1,
   });
-  await page.addInitScript(() =>
-    localStorage.setItem("intent-portfolio-visits", "1"),
-  );
   if (["light", "dark"].includes(theme)) {
     await page.addInitScript(
       (value) => localStorage.setItem("intent-portfolio-theme", value),
@@ -43,7 +40,6 @@ try {
       await page.goto(`http://127.0.0.1:4173${route}`, {
         waitUntil: "networkidle",
       });
-      await page.locator(".site-loader").waitFor({ state: "hidden" });
       await page.evaluate(async () => {
         document
           .querySelectorAll("img")

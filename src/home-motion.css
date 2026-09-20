@@ -1,0 +1,166 @@
+/* Shared camera space; nested wrappers separate reveal, scroll and pointer motion. */
+body[data-page="home"] [data-depth-surface] {
+  transform: perspective(1100px) translateZ(var(--depth-z, 0px))
+    rotateX(calc(var(--depth-enter, 0deg) + var(--depth-pitch, 0deg)))
+    rotateY(var(--depth-yaw, 0deg)) rotateZ(var(--depth-roll, 0deg));
+  transform-origin: center;
+}
+.project-depth {
+  flex-shrink: 0;
+}
+[data-depth-surface] .project-image:is(:hover, :focus-visible) > img {
+  transform: none;
+}
+.sculpture.is-ready > .sculpture-orbit {
+  opacity: 0;
+}
+.sculpture .specialty-fallback {
+  inset: auto;
+  left: 50%;
+  top: 48%;
+  width: min(84%, 56vh);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  transform: translate(-50%, -50%);
+  perspective: none;
+}
+.specialty-card {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 3 / 2;
+  padding: 6%;
+  border: 1px solid var(--line);
+  background: var(--surface, #181c15);
+  color: var(--paper);
+  box-shadow: 0 12px 32px #00000012;
+}
+.specialty-card:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 6px);
+  padding: 3%;
+}
+.specialty-card .specialty-number {
+  position: absolute;
+  top: 11%;
+  left: 6%;
+  display: block;
+  color: var(--lime);
+  font-size: clamp(8px, 2.6cqw, 13px);
+  letter-spacing: 0.06em;
+}
+.specialty-card h2 {
+  position: absolute;
+  top: 26%;
+  left: 6%;
+  margin: 0;
+  font-size: clamp(16px, 9cqw, 38px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.specialty-card h2 span {
+  display: block;
+}
+.specialty-card .specialty-symbol {
+  position: absolute;
+  right: 6%;
+  top: 24%;
+  width: 24%;
+  height: auto;
+  color: var(--lime);
+}
+.specialty-card p {
+  position: absolute;
+  top: 62%;
+  left: 6%;
+  margin: 0;
+  font-size: clamp(9px, 3cqw, 15px);
+  line-height: 1.5;
+}
+.specialty-card .specialty-tag {
+  position: absolute;
+  bottom: 10%;
+  left: 6%;
+  right: 6%;
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-top: 6%;
+  font-size: clamp(7px, 2.2cqw, 11px);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+.sculpture:has(.specialty-fallback) .sculpture-caption {
+  bottom: 3%;
+  right: 12%;
+}
+html[data-motion="full"] .sculpture-fallback {
+  transition: opacity 0.45s ease;
+}
+html[data-motion="full"] .sculpture > canvas {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+html[data-motion="full"] .sculpture.is-ready > canvas {
+  opacity: 1;
+}
+@media (min-width: 1024px) and (min-height: 700px) {
+  /* Keep the whole pinned hero, including its links, inside a short laptop screen. */
+  body[data-page="home"] .hero-stage {
+    height: clamp(360px, calc(100svh - 330px), 690px);
+  }
+  body[data-page="home"] .hero-title {
+    font-size: min(11.9vw, calc((100svh - 330px) / 2.8), 190px);
+  }
+}
+@media (max-width: 767px) {
+  .sculpture .specialty-fallback {
+    width: 86%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    top: 47%;
+  }
+  .specialty-card,
+  .specialty-card:last-child {
+    width: 100%;
+    aspect-ratio: auto;
+    grid-column: auto;
+    padding: 12px 15px;
+  }
+  .specialty-card h2 {
+    font-size: 20px;
+    margin-top: 6px;
+  }
+  .specialty-card h2 span {
+    display: inline;
+  }
+  .specialty-card :is(.specialty-number, h2, p, .specialty-tag) {
+    position: static;
+  }
+  .specialty-card h2 span + span::before {
+    content: " ";
+  }
+  .specialty-card .specialty-symbol {
+    width: 35px;
+    top: 10px;
+    right: 12px;
+  }
+  .specialty-card p {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+  .specialty-card .specialty-tag {
+    margin-top: 7px;
+    padding-top: 6px;
+    font-size: 7px;
+  }
+}
+html[data-motion="reduced"] [data-depth-surface] {
+  transform: none;
+}
+@media print {
+  [data-depth-surface] {
+    transform: none !important;
+  }
+}

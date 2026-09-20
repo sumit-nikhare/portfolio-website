@@ -18,7 +18,7 @@ try {
       ])
     : [
         ["home", "/"],
-        ["case-study", "/projects/forma/"],
+        ["case-study", "/projects/sample-continuum/"],
         ["playground", "/playground/"],
       ];
   for (const [name, route] of routes) {

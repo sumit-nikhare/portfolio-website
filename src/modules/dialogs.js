@@ -6,6 +6,7 @@ export function initDialogs(getMode) {
   const opener = document.querySelector("[data-menu-open]");
   let menuTimeline,
     previewTween,
+    previewGeneration = 0,
     closing = false;
   const links = [...(menu?.querySelectorAll("nav a") || [])];
   const preview = menu?.querySelector("[data-nav-preview]");
@@ -16,6 +17,7 @@ export function initDialogs(getMode) {
       ]
     : [];
   const clearMenu = () => {
+    previewGeneration++;
     menuTimeline?.kill();
     previewTween?.kill();
     if (!menu) return;
@@ -28,6 +30,11 @@ export function initDialogs(getMode) {
   const close = (dialog, immediate = false) => {
     if (!dialog?.open) return;
     if (dialog !== menu || immediate || getMode() === "reduced") {
+      if (dialog === menu) {
+        clearMenu();
+        closing = false;
+        opener?.setAttribute("aria-expanded", "false");
+      }
       dialog.close();
       return;
     }
@@ -54,6 +61,7 @@ export function initDialogs(getMode) {
       );
   };
   if (menu && opener) {
+    document.documentElement.classList.add("menu-ready");
     opener.setAttribute("aria-expanded", "false");
     opener.addEventListener("click", () => {
       clearMenu();
@@ -120,10 +128,20 @@ export function initDialogs(getMode) {
         )
           close(menu, true);
       });
-      const showPreview = () => {
+      const showPreview = async () => {
         if (!preview || closing) return;
+        const generation = ++previewGeneration;
         const src = `${import.meta.env.BASE_URL}assets/${link.dataset.preview}-cover.webp`;
         if (preview.getAttribute("src") === src) return;
+        // Keep the existing image until its replacement can actually paint.
+        const next = new Image();
+        next.src = src;
+        try {
+          await next.decode();
+        } catch {
+          return;
+        }
+        if (generation !== previewGeneration || !menu.open || closing) return;
         previewTween?.kill();
         preview.src = src;
         preview.alt = `${link.dataset.preview} workflow illustration`;

@@ -7,6 +7,7 @@ export function initExplorers(getMode) {
     let transition;
     const clear = () => {
       transition?.kill();
+      transition = null;
       gsap.killTweensOf(panels);
       gsap.set(explorer, { clearProps: "height,overflow" });
       gsap.set(panels, { clearProps: "transform,opacity" });
@@ -70,6 +71,19 @@ export function initExplorers(getMode) {
     document.addEventListener("portfolio:motion", () => {
       if (getMode() === "reduced") clear();
     });
+    window.addEventListener("resize", () => {
+      if (transition) clear();
+    });
+    window.addEventListener("pagehide", clear);
+    explorer.addEventListener(
+      "load",
+      () => {
+        if (!transition) return;
+        clear();
+        window.dispatchEvent(new Event("resize"));
+      },
+      true,
+    );
     activate(tabs[0], false);
   });
   const chapters = document.querySelectorAll(
@@ -80,8 +94,10 @@ export function initExplorers(getMode) {
       (entries) => {
         for (const entry of entries)
           if (entry.isIntersecting) {
+            const destination =
+              entry.target.dataset.chapterGroup || entry.target.id;
             document.querySelectorAll(".case-index a").forEach((link) => {
-              if (link.hash === `#${entry.target.id}`)
+              if (link.hash === `#${destination}`)
                 link.setAttribute("aria-current", "location");
               else link.removeAttribute("aria-current");
             });

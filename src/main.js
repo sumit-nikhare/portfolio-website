@@ -24,6 +24,8 @@ import { initExplorers } from "./modules/explorer.js";
 import { initDemo } from "./modules/demo.js";
 import { initPlayground } from "./modules/playground.js";
 import { initMotion } from "./modules/motion.js";
+import { initHomeDepth } from "./modules/home-depth.js";
+import { initCursor } from "./modules/cursor.js";
 
 document.documentElement.classList.add("js");
 document
@@ -54,14 +56,29 @@ initExplorers(getMode);
 initDemo();
 initPlayground(getMode);
 initMotion(getMode);
+initHomeDepth(getMode);
 initCollections(getMode);
 initContact();
 initArticles();
+initCursor();
+
+if (document.querySelector("[data-sample-case]")) {
+  import("./modules/sample-case.js")
+    .then(({ initSampleCase }) => initSampleCase(getMode))
+    .catch((error) =>
+      console.info(
+        "The static sample walkthrough remains available.",
+        error.message,
+      ),
+    );
+}
 
 const desktop = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
 let cleanScene,
+  pageActive = true,
   graphicsGeneration = 0;
 async function configureGraphics() {
+  if (!pageActive) return;
   const generation = ++graphicsGeneration;
   cleanScene?.();
   cleanScene = null;
@@ -74,10 +91,12 @@ async function configureGraphics() {
   try {
     const { initSculpture } = await import("./modules/sculpture.js");
     if (generation !== graphicsGeneration) return;
-    cleanScene = await initSculpture(
+    const cleanup = await initSculpture(
       getMode,
       () => generation === graphicsGeneration,
     );
+    if (generation === graphicsGeneration) cleanScene = cleanup;
+    else cleanup();
   } catch (error) {
     console.info(
       "The static artwork is active. Interactive graphics were unavailable.",
@@ -87,6 +106,12 @@ async function configureGraphics() {
 }
 document.addEventListener("portfolio:motion", configureGraphics);
 desktop.addEventListener("change", configureGraphics);
+window.addEventListener("pagehide", () => {
+  pageActive = false;
+  graphicsGeneration++;
+  cleanScene?.();
+  cleanScene = null;
+});
 if ("requestIdleCallback" in window)
   requestIdleCallback(configureGraphics, { timeout: 1800 });
 else setTimeout(configureGraphics, 400);
@@ -97,6 +122,7 @@ document.querySelectorAll("[data-project-link]").forEach((link) =>
       event.metaKey ||
       event.ctrlKey ||
       event.shiftKey ||
+      event.altKey ||
       getMode() === "reduced"
     )
       return;
@@ -116,17 +142,8 @@ window.addEventListener("pageshow", (event) => {
     .querySelectorAll("[data-project] h3")
     .forEach((item) => (item.style.viewTransitionName = "none"));
   if (event.persisted) {
+    pageActive = true;
     configureGraphics();
     window.dispatchEvent(new Event("resize"));
   }
 });
-document.addEventListener("visibilitychange", () =>
-  document
-    .querySelectorAll(".ticker-track")
-    .forEach(
-      (track) =>
-        (track.style.animationPlayState = document.hidden
-          ? "paused"
-          : "running"),
-    ),
-);

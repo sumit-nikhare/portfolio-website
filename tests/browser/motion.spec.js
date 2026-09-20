@@ -1,140 +1,93 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("mandatory loader lasts five seconds and returns on visits 6 and 11", async ({
+test("motion choice synchronizes across tabs and history without replaying SVG motion", async ({
+  page,
+  context,
+}) => {
+  await page.goto("/playground/");
+  await page.locator("[data-svg-replay]").click();
+  const other = await context.newPage();
+  await other.goto("/contact/");
+  await other.locator("[data-motion-toggle]").click();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "reduced");
+  await expect(page.locator("[data-svg-pause]")).toBeDisabled();
+  await expect(page.locator("[data-svg-path]")).toHaveCSS(
+    "stroke-dashoffset",
+    "0px",
+  );
+  await other.locator("[data-motion-toggle]").click();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "full");
+  await expect(page.locator("[data-svg-pause]")).toBeDisabled();
+  await page.locator("[data-svg-replay]").click();
+  await page.goto("/about/");
+  await page.locator("[data-motion-toggle]").click();
+  await page.goBack();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "reduced");
+  await expect(page.locator("[data-svg-pause]")).toBeDisabled();
+  await other.close();
+});
+
+test("fresh and repeated visits remain interactive without the old loader", async ({
   page,
 }) => {
-  test.setTimeout(40000);
   await page.goto("/about/");
-  const loader = page.locator(".site-loader");
-  await expect(loader).toBeVisible();
-  await page.mouse.click(100, 100);
-  await page.keyboard.press("Escape");
-  await page.keyboard.press("Tab");
-  await expect(loader).toBeVisible();
-  await expect(page.locator("#main")).toHaveJSProperty("inert", true);
-  await page.waitForFunction(
-    () => performance.now() - window.portfolioIntro.startedAt >= 4700,
-  );
-  await expect(loader).toBeVisible();
-  await expect(loader).not.toBeVisible();
-  expect(
+  await expect(page.locator(".site-loader")).toHaveCount(0);
+  for (const value of ["0", "5", "10"]) {
     await page.evaluate(
-      () => performance.now() - window.portfolioIntro.startedAt,
-    ),
-  ).toBeGreaterThanOrEqual(5000);
-  await expect(page.locator("#main")).toHaveJSProperty("inert", false);
-  for (let visit = 2; visit <= 11; visit++) {
-    await page.goto(visit % 2 ? "/about/" : "/contact/");
+      (visit) => localStorage.setItem("intent-portfolio-visits", visit),
+      value,
+    );
+    await page.reload();
+    await expect(page.locator(".site-loader")).toHaveCount(0);
+    await expect(page.locator("#main")).toHaveJSProperty("inert", false);
     expect(
       await page.evaluate(() =>
         localStorage.getItem("intent-portfolio-visits"),
       ),
-    ).toBe(String(visit));
-    if ([6, 11].includes(visit)) {
-      await expect(loader).toBeVisible();
-      await expect(loader).not.toBeVisible();
-      expect(
-        await page.evaluate(
-          () => performance.now() - window.portfolioIntro.startedAt,
-        ),
-      ).toBeGreaterThanOrEqual(5000);
-    } else {
-      await expect(loader).not.toBeVisible();
-      await expect(page.locator("#main")).toHaveJSProperty("inert", false);
-    }
+    ).toBe(value);
+    await page.getByRole("button", { name: "Menu", exact: true }).click();
+    await expect(page.locator("#navigation-dialog")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#navigation-dialog")).not.toBeVisible();
   }
 });
 
-test("visit count persists in a new tab and refreshes count as visits", async ({
-  page,
-  context,
-}) => {
-  await page.goto("/about/");
-  await expect(page.locator(".site-loader")).not.toBeVisible();
-  for (let visit = 2; visit <= 5; visit++) await page.reload();
-  const next = await context.newPage();
-  await next.goto("http://127.0.0.1:4173/contact/");
-  await expect(next.locator(".site-loader")).toBeVisible();
-  expect(
-    await next.evaluate(() => localStorage.getItem("intent-portfolio-visits")),
-  ).toBe("6");
-  await expect(next.locator(".site-loader")).not.toBeVisible();
-  await expect(
-    next.getByRole("button", { name: "Menu", exact: true }),
-  ).toBeEnabled();
-  await next.close();
-});
-
-test("five-second release works when the app and browser storage are unavailable", async ({
+test("failed app and blocked storage still leave navigation and content accessible", async ({
   page,
 }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript(() =>
     Object.defineProperty(window, "localStorage", {
       get() {
-        throw new DOMException("Blocked", "SecurityError");
+        throw new Error("Storage unavailable");
       },
-    });
-  });
+    }),
+  );
   await page.route(/\/assets\/main-.*\.js$/, (route) => route.abort());
   await page.goto("/about/");
-  await expect(page.locator(".site-loader")).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(page.locator(".site-loader")).toBeVisible();
-  await expect(page.locator(".site-loader")).not.toBeVisible();
-  expect(
-    await page.evaluate(
-      () => performance.now() - window.portfolioIntro.startedAt,
-    ),
-  ).toBeGreaterThanOrEqual(5000);
   await expect(page.locator("#main")).toHaveJSProperty("inert", false);
+  await expect(page.locator(".site-loader")).toHaveCount(0);
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
+  await page.locator(".static-menu > summary").click();
+  await expect(page.locator(".static-menu nav")).toBeVisible();
 });
 
-test("reduced motion retains a static mandatory loader and releases after five seconds", async ({
-  page,
-}) => {
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/projects/ai-enabled/");
-  await expect(page.locator("html")).toHaveAttribute("data-motion", "reduced");
-  await expect(page.locator(".site-loader")).toBeVisible();
-  await expect(page.locator(".loader-mark")).toHaveCSS("transform", "none");
-  expect(
-    await page
-      .locator(".loader-line")
-      .evaluate(
-        (element) => getComputedStyle(element, "::after").animationName,
-      ),
-  ).toBe("none");
-  await expect(page.locator(".site-loader")).not.toBeVisible();
-  expect(
-    await page.evaluate(
-      () => performance.now() - window.portfolioIntro.startedAt,
-    ),
-  ).toBeGreaterThanOrEqual(5000);
-  await expect(page.locator(".site-scroll-progress")).not.toBeVisible();
-  await expect(page.locator("#main h1")).toHaveCSS("opacity", "1");
-});
-
-test("switching motion mode during the hold does not dismiss the loader", async ({
+test("brand entrance clears and reduced motion or history return leave no transform", async ({
   page,
 }) => {
   await page.goto("/about/");
-  await expect(page.locator(".site-loader")).toBeVisible();
+  const brand = page.locator(".site-header .brand-mark");
+  await expect
+    .poll(() => brand.evaluate((node) => node.style.transform))
+    .toBe("");
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(page.locator(".site-loader")).toBeVisible();
-  await expect(page.locator(".loader-mark")).toHaveCSS("transform", "none");
-  await page.emulateMedia({ reducedMotion: "no-preference" });
-  await expect(page.locator(".site-loader")).toBeVisible();
-  await expect(page.locator(".site-loader")).not.toBeVisible();
-  expect(
-    await page.evaluate(
-      () => performance.now() - window.portfolioIntro.startedAt,
-    ),
-  ).toBeGreaterThanOrEqual(5000);
-  await page.getByRole("button", { name: "Menu", exact: true }).click();
-  await expect(page.locator("#navigation-dialog")).toBeVisible();
+  await expect(brand).toHaveCSS("transform", "none");
+  await expect(page.locator("#main")).toHaveJSProperty("inert", false);
+  await page.goto("/contact/");
+  await page.goBack();
+  await expect(brand).toHaveCSS("transform", "none");
+  await expect(page.locator(".site-loader")).toHaveCount(0);
 });
 
 test("menu tolerates interrupted entrances, repeated closing, and live motion changes", async ({

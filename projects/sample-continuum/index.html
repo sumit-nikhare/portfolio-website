@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="en" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Continuum — Fictional sample case study · Sumit Nikhare</title>
+    <meta
+      name="description"
+      content="A fictional portfolio case study demonstrating decision-led storytelling: clear referral ownership, offline handoffs, and focused work queues."
+    />
+    <meta
+      property="og:title"
+      content="Continuum — Fictional sample case study"
+    />
+    <meta
+      property="og:description"
+      content="From screening to follow-up. An illustrative product-design narrative and interactive prototype; not client work."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%BASE_URL%og.png" />
+    <link rel="icon" type="image/png" href="%BASE_URL%assets/favicon.png" />
+    <link
+      rel="preload"
+      href="%BASE_URL%fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {{canonical}}
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/sample-case.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body
+    data-page="case"
+    data-sample-case="continuum"
+    class="sample-case"
+    style="--accent: #d2ff5a"
+  >
+    <!-- include:header -->
+    <main id="main">
+      <!-- SAMPLE ONLY: every project fact, participant, timeline, quote and result below is fictional. -->
+      <section
+        class="case-hero shell"
+        id="project-hero"
+        data-case-section="01"
+        aria-labelledby="sample-title"
+      >
+        <div class="case-breadcrumb">
+          <a href="%BASE_URL%work/">← BACK TO REAL PROJECTS</a
+          ><span>FICTIONAL SAMPLE / 2026</span>
+        </div>
+        <p class="eyebrow sample-section-label">01 / PROJECT HERO</p>
+        <h1 id="sample-title">Continuum<span>.</span></h1>
+        <div class="case-intro">
+          <h2>From screening<br />to follow-up.</h2>
+          <p>
+            Making the next owner of a community-health referral
+            unmistakable—even when the connection disappears.
+          </p>
+        </div>
+        <div class="sample-notice">
+          <p>
+            <strong>Fictional sample case study.</strong> Product, research,
+            team, timeline, quotes, and outcomes are illustrative. This is not
+            client work or a claim about Sumit’s professional results.
+          </p>
+          <button
+            class="sample-guide-toggle"
+            type="button"
+            data-guide-toggle
+            aria-pressed="false"
+            aria-controls="main"
+            hidden
+          >
+            Explain this structure <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <details class="sample-guide-note" data-guide-note>
+          <summary>Guide / Project hero</summary>
+          <p>
+            <b>Purpose:</b> establish the product and the change in one glance.
+            Replace this concept with your actual product, a precise
+            contribution, and an approved final visual. An outcome-oriented
+            headline can describe a useful change without inventing a
+            percentage.
+          </p>
+        </details>
+        <figure class="sample-hero-figure">
+          <a
+            class="case-cover media-link"
+            href="%BASE_URL%assets/continuum/hero.svg"
+            data-gallery="continuum"
+            data-caption="Continuum — fictional field-worker handoff and clinic work queue. All records are synthetic."
+          >
+            <picture
+              ><source
+                media="(max-width: 600px)"
+                srcset="%BASE_URL%assets/continuum/hero-mobile.svg" />
+              <img
+                src="%BASE_URL%assets/continuum/hero.svg"
+                width="1440"
+                height="900"
+                alt="Fictional mobile handoff, showing the receiving clinic and the next owner after delivery"
+                fetchpriority="high"
+            /></picture>
+            <span class="zoom-indicator" aria-hidden="true"
+              ><i data-lucide="maximize-2"></i
+            ></span>
+          </a>
+          <figcaption>
+            ORIGINAL CONCEPT INTERFACES · SYNTHETIC RECORDS · SELECT TO INSPECT
+          </figcaption>
+        </figure>
+        <div class="sample-reading-cue">
+          <span>15 sec / the overview</span><span>90 sec / the argument</span
+          ><span>5–10 min / the evidence</span>
+        </div>
+      </section>
+      <div class="case-body shell" id="sample-reading-body">
+        <nav class="case-index" aria-label="Case study sections">
+          <span class="eyebrow">IN THIS STUDY</span
+          ><a href="#overview">Overview <span>02–03</span></a
+          ><a href="#problem">Problem <span>04–07</span></a
+          ><a href="#decisions">Decisions <span>08</span></a
+          ><a href="#solution">Solution <span>09–11</span></a
+          ><a href="#impact">Impact <span>12–13</span></a>
+        </nav>
+        <div class="sample-story">
+          <section
+            class="case-chapter"
+            id="overview"
+            data-case-section="02"
+            data-chapter-group="overview"
+            aria-labelledby="overview-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >02 / EXECUTIVE SNAPSHOT</span
+            >
+            <h2 id="overview-title">
+              The record moved.<br /><span class="muted"
+                >Responsibility didn’t.</span
+              >
+            </h2>
+            <p>
+              A completed screening could still leave the next action unowned.
+              Continuum explores one shared handoff: what needs doing, who owns
+              it, and whether the receiving clinic actually has it.
+            </p>
+            <dl class="sample-snapshot">
+              <div>
+                <dt>Challenge</dt>
+                <dd>
+                  Referrals lose ownership between field visits and clinic
+                  follow-up.
+                </dd>
+              </div>
+              <div>
+                <dt>Sample ownership</dt>
+                <dd>
+                  Workflow architecture, interaction design, UI, and prototype.
+                </dd>
+              </div>
+              <div>
+                <dt>Scope</dt>
+                <dd>
+                  Referral creation, delivery states, and receiving queues.
+                </dd>
+              </div>
+              <div>
+                <dt>Illustrative team</dt>
+                <dd>
+                  Designer, product manager, two engineers, and programme lead.
+                </dd>
+              </div>
+              <div>
+                <dt>Illustrative timeline</dt>
+                <dd>
+                  Eight weeks: framing → prototypes → simulated iteration.
+                </dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd>Fictional prototype. Not deployed or user-validated.</dd>
+              </div>
+              <div class="sample-snapshot-wide">
+                <dt>Illustrative outcome</dt>
+                <dd>
+                  Unassisted completion: 4/8 → 7/8. Median task time: 150 → 105
+                  seconds. Teaching examples only.
+                </dd>
+              </div>
+            </dl>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Executive snapshot</summary>
+              <p>
+                <b>Reviewer question:</b> what was the project, what did you
+                own, and what changed? Replace every field with sourced facts.
+                Keep project dates separate from employment dates. Label a
+                pilot, prototype, or shipped release accurately.
+              </p>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="context-system"
+            data-case-section="03"
+            data-chapter-group="overview"
+            aria-labelledby="context-system-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >03 / CONTEXT + SYSTEM</span
+            >
+            <h2 id="context-system-title">
+              The handoff crosses<br /><span class="muted">three roles.</span>
+            </h2>
+            <p>
+              The field worker prepares the referral. The clinic coordinator
+              accepts the next action. A supervisor monitors exceptions without
+              becoming the default owner of every task.
+            </p>
+            <p>
+              In this fictional service, the referral connects screening during
+              a field visit to clinic follow-up, across intermittent
+              connections.
+            </p>
+            <figure class="sample-figure">
+              <a
+                class="media-link"
+                href="%BASE_URL%assets/continuum/system.svg"
+                data-gallery="continuum"
+                data-caption="Illustrative system map — field worker, clinic coordinator, and supervisor; delivery changes ownership."
+                ><img
+                  src="%BASE_URL%assets/continuum/system.svg"
+                  width="1200"
+                  height="520"
+                  alt="Field worker prepares and sends, clinic coordinator receives and follows up, supervisor monitors exceptions"
+                  loading="lazy"
+              /></a>
+              <figcaption>
+                CONTEXT + SYSTEM / OWNERSHIP FOLLOWS AN ACKNOWLEDGED HANDOFF
+              </figcaption>
+            </figure>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Context and system</summary>
+              <p>
+                <b>Purpose:</b> orient the reader before showing UI. Use the
+                smallest map that explains the actors and dependencies. Show
+                where your scope begins and ends; a full organizational chart is
+                rarely necessary.
+              </p>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="problem"
+            data-case-section="04"
+            data-chapter-group="problem"
+            aria-labelledby="problem-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >04 / PROBLEM + STAKES</span
+            >
+            <h2 id="problem-title">
+              “Saved” was doing<br /><span class="muted">too much work.</span>
+            </h2>
+            <p>
+              In this scenario, one success message covers both local saving and
+              delivery. A field worker assumes the clinic has the referral; the
+              clinic sees nothing. Follow-up stalls, and supervisors chase
+              updates outside the product.
+            </p>
+            <p>
+              <strong>Why now:</strong> the fictional programme is adding
+              clinics; informal follow-up cannot support the wider handoff
+              network.
+            </p>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Problem and stakes</summary>
+              <p>
+                <b>Purpose:</b> connect the interface failure to its human and
+                operational consequence. Replace this hypothetical scenario with
+                a supported observation. Explain why the problem mattered at
+                that point in the product’s life.
+              </p>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="success-definition"
+            data-case-section="05"
+            data-chapter-group="problem"
+            aria-labelledby="success-definition-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >05 / SUCCESS DEFINITION</span
+            >
+            <h2 id="success-definition-title">
+              Define success<br /><span class="muted"
+                >before drawing screens.</span
+              >
+            </h2>
+            <p>
+              A worker should identify the next owner and distinguish “saved
+              here” from “received there.” Measure unassisted handoffs, task
+              time, and incorrect delivery assumptions—not the number of
+              redesigned screens.
+            </p>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Success definition</summary>
+              <p>
+                State the intended behavior before discussing outcomes. For real
+                work, record the task, baseline, measurement method, and any
+                success threshold. A retrospective proxy should not be presented
+                as an original project goal.
+              </p>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="designing-for-reality"
+            data-case-section="06"
+            data-chapter-group="problem"
+            aria-labelledby="designing-for-reality-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >06 / DESIGNING FOR REALITY</span
+            >
+            <h2 id="designing-for-reality-title">
+              Constraints shape<br /><span class="muted">the interaction.</span>
+            </h2>
+            <dl class="sample-constraints">
+              <div>
+                <dt>Intermittent connectivity</dt>
+                <dd>Separate saved, queued, and received states.</dd>
+              </div>
+              <div>
+                <dt>Limited engineering capacity</dt>
+                <dd>
+                  Use explicit receipt confirmation before considering live
+                  presence.
+                </dd>
+              </div>
+              <div>
+                <dt>Different role permissions</dt>
+                <dd>
+                  Expose ownership while limiting who can change the record.
+                </dd>
+              </div>
+            </dl>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Designing for reality</summary>
+              <p>
+                Pair each real constraint with the decision it changed. Explain
+                the limitation without implying an engineering, policy, or
+                accessibility requirement that you have not verified.
+              </p>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="evidence-reframing"
+            data-case-section="07"
+            data-chapter-group="problem"
+            aria-labelledby="evidence-reframing-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >07 / EVIDENCE + REFRAMING</span
+            >
+            <h2 id="evidence-reframing-title">
+              The missing piece<br /><span class="muted">was ownership.</span>
+            </h2>
+            <dl class="sample-evidence-chain">
+              <div>
+                <dt>Initial assumption</dt>
+                <dd>A shorter form would solve incomplete referrals.</dd>
+              </div>
+              <div>
+                <dt>Illustrative evidence</dt>
+                <dd>
+                  Only 4/8 fictional participants complete the handoff
+                  unassisted; saving is confused with delivery.
+                </dd>
+              </div>
+              <div>
+                <dt>Insight</dt>
+                <dd>Completing a screen does not establish who acts next.</dd>
+              </div>
+            </dl>
+            <div class="sample-reframe">
+              <span class="eyebrow">ILLUSTRATIVE REFRAME</span>
+              <p>
+                From “make the referral shorter”<br /><strong
+                  >to “make the handoff explicit.”</strong
+                >
+              </p>
+            </div>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Evidence and reframing</summary>
+              <p>
+                Show how evidence changed your understanding. Distinguish an
+                assumption from an observation and an interpretation. The
+                research disclosure below demonstrates the format; its contents
+                are invented.
+              </p>
+            </details>
+            <details class="sample-deep">
+              <summary>Explore the illustrative evidence</summary>
+              <div class="sample-deep-copy">
+                <p>
+                  The starting assumption was that a shorter referral form would
+                  improve completion. An illustrative workflow audit instead
+                  identified an ambiguous boundary: a local save looked like a
+                  successful transfer. Removing fields would leave that
+                  ambiguity intact.
+                </p>
+                <p>
+                  Imagine a moderated task in which eight fictional participants
+                  prepare a referral and explain what happens next. Four reach
+                  the intended destination without help. Several describe the
+                  final message as proof that the clinic has received the
+                  record, even in an offline scenario. These are constructed
+                  observations, not interviews or tests that took place.
+                </p>
+                <p>
+                  The useful distinction is between completing a screen and
+                  completing a handoff. The reframed opportunity is to make
+                  responsibility visible before submission and delivery
+                  observable afterward. That leads to a destination review,
+                  separate delivery states, and a receiving queue.
+                </p>
+                <p>
+                  For a real project, retain the task script, anonymized
+                  observation notes, participant roles, and competing
+                  explanations. A missed action might also reflect training,
+                  terminology, or an unrealistic test scenario. Evidence should
+                  narrow the decision rather than conveniently prove an already
+                  chosen design.
+                </p>
+              </div>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="decisions"
+            data-case-section="08"
+            data-chapter-group="decisions"
+            aria-labelledby="decisions-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >08 / KEY PRODUCT DECISIONS</span
+            >
+            <h2 id="decisions-title">
+              Three choices.<br /><span class="muted"
+                >One clearer contract.</span
+              >
+            </h2>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Product decisions</summary>
+              <p>
+                Keep the choice, reasoning, trade-off, and consequence visible.
+                Put extended alternatives in the disclosure. Replace the
+                illustrative collaboration with who actually influenced each
+                decision, and distinguish what you owned from what the team
+                decided.
+              </p>
+            </details>
+            <article class="sample-decision">
+              <span class="sample-decision-number">01</span>
+              <div>
+                <h3>Name the next owner.</h3>
+                <p>
+                  The illustrative task suggests a status label alone is
+                  insufficient. Choose an explicit destination review over
+                  another generic alert. In the sample team, the programme lead
+                  clarifies who can receive the referral. The extra review step
+                  costs a tap but gives the worker a concrete handoff to
+                  confirm.
+                </p>
+                <p class="sample-consequence">
+                  <b>Consequence:</b> destination and next action appear
+                  together before sending.
+                </p>
+              </div>
+            </article>
+            <article class="sample-decision">
+              <span class="sample-decision-number">02</span>
+              <div>
+                <h3>Saving is not sending.</h3>
+                <p>
+                  Choose a local queue over an always-online submission gate. In
+                  this scenario, engineering identifies unreliable connectivity
+                  as the limiting condition. Preserving work adds retry and
+                  reconciliation complexity; it also prevents a connection
+                  failure from erasing progress.
+                </p>
+                <p class="sample-consequence">
+                  <b>Consequence:</b> “Queued” keeps ownership with the sender
+                  until receipt.
+                </p>
+              </div>
+            </article>
+            <article class="sample-decision">
+              <span class="sample-decision-number">03</span>
+              <div>
+                <h3>Give each role a useful queue.</h3>
+                <p>
+                  The illustrative workflow audit gives each role a different
+                  next action. Choose responsibility-based queues over one
+                  universal dashboard. The fictional product manager prioritizes
+                  actionability over a comprehensive landing screen. Some
+                  cross-role detail moves one level deeper, while a shared
+                  status vocabulary preserves continuity.
+                </p>
+                <p class="sample-consequence">
+                  <b>Consequence:</b> workers see unsent handoffs; coordinators
+                  see referrals to accept.
+                </p>
+              </div>
+            </article>
+            <details class="sample-deep">
+              <summary>Compare alternatives and trade-offs</summary>
+              <div class="sample-deep-copy">
+                <p>
+                  <b>Ownership:</b> a passive confirmation banner is inexpensive
+                  but easy to dismiss. A blocking alert adds emphasis without
+                  explaining the receiving role. A destination review exposes
+                  the relationship before commitment. It is justified only if
+                  the consequence of a wrong handoff outweighs the extra step;
+                  routine repeat referrals might eventually support a remembered
+                  destination.
+                </p>
+                <p>
+                  <b>Connectivity:</b> an always-online gate keeps the server
+                  authoritative but interrupts fieldwork. Silent background
+                  retries preserve progress yet obscure whether anyone received
+                  the record. An explicit queue gives the worker an honest state
+                  and a recovery action. A production version would need durable
+                  local storage, acknowledgement handling, an idempotency key,
+                  and a policy for stale records. The demonstration only
+                  simulates those states in memory.
+                </p>
+                <p>
+                  <b>Queues:</b> a universal dashboard makes broad reporting
+                  easy but forces each role to filter irrelevant work. Separate
+                  products risk inconsistent statuses. Role-specific views of
+                  the same referral model offer a middle path. The trade-off is
+                  additional permission and navigation design, including a clear
+                  supervisor route to cross-role exceptions.
+                </p>
+                <p>
+                  These choices form a connected argument. Naming an owner would
+                  be misleading without a trustworthy delivery state, and
+                  trustworthy states would be hard to act on without useful
+                  queues. A real case study should expose this dependency and
+                  include disagreement, rejected options, and the actual limits
+                  of your influence.
+                </p>
+              </div>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="solution"
+            data-case-section="09"
+            data-chapter-group="solution"
+            aria-labelledby="solution-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >09 / FINAL EXPERIENCE</span
+            >
+            <h2 id="solution-title">
+              Make the next action<br /><span class="muted">hard to miss.</span>
+            </h2>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Final experience</summary>
+              <p>
+                Organize the solution around what people can now accomplish. Use
+                approved screens and meaningful annotations. A prototype should
+                demonstrate a consequential interaction rather than reproduce
+                every screen in the product.
+              </p>
+            </details>
+            <h3>01 / Know where the handoff is going.</h3>
+            <p>
+              Destination, next owner, and delivery expectation share one
+              review. The confirmation describes what actually happened.
+            </p>
+            <figure class="sample-figure">
+              <a
+                class="media-link"
+                href="%BASE_URL%assets/continuum/comparison.svg"
+                data-gallery="continuum"
+                data-caption="Fictional before/after — ambiguous Saved message replaced with destination, owner, and delivery state."
+                ><img
+                  src="%BASE_URL%assets/continuum/comparison.svg"
+                  width="1200"
+                  height="660"
+                  alt="Before: Saved with no destination or owner. After: East Community Clinic and the next owner after delivery are explicit before confirmation"
+                  loading="lazy"
+              /></a>
+              <figcaption>
+                ILLUSTRATIVE BEFORE / AFTER · EXPLANATORY INTERFACE STUDY
+              </figcaption>
+            </figure>
+            <h3>02 / Keep moving when the network stops.</h3>
+            <p>
+              Try a handoff, then restart with the offline simulation enabled. A
+              queued referral remains the worker’s responsibility until it is
+              sent.
+            </p>
+            <div class="sample-demo" id="referral-demo">
+              <div class="sample-demo-heading">
+                <span class="eyebrow">WORKING CONCEPT / SYNTHETIC DATA</span
+                ><span>NOT A LIVE HEALTHCARE SERVICE</span>
+              </div>
+              <div data-referral-fallback class="sample-static-walkthrough">
+                <h4>A three-step handoff</h4>
+                <ol>
+                  <li>Choose East or North Community Clinic.</li>
+                  <li>Review the destination and next owner.</li>
+                  <li>
+                    Confirm: an online handoff becomes Sent; an offline handoff
+                    stays Queued until reconnection.
+                  </li>
+                </ol>
+                <p>
+                  The interactive simulation uses JavaScript. This walkthrough
+                  and the surrounding visuals explain the same behavior.
+                </p>
+              </div>
+              <div data-referral-app hidden>
+                <div class="sample-demo-toolbar">
+                  <label
+                    ><input type="checkbox" data-referral-offline /> Simulate
+                    offline</label
+                  ><span data-referral-network>Online simulation</span
+                  ><span data-referral-step-label>1 / 3</span>
+                </div>
+                <div class="sample-demo-body">
+                  <section data-referral-step="choose">
+                    <h4 tabindex="-1" data-step-heading>
+                      Choose the next destination.
+                    </h4>
+                    <p class="sample-demo-record">
+                      DEMO-014 · Synthetic referral · No personal information
+                    </p>
+                    <form novalidate>
+                      <fieldset aria-describedby="clinic-error">
+                        <legend>Receiving clinic</legend>
+                        <label class="sample-clinic-option"
+                          ><input
+                            type="radio"
+                            name="clinic"
+                            value="east"
+                            required
+                            aria-describedby="clinic-error"
+                          /><span
+                            ><b>East Community Clinic</b
+                            ><small>Next owner: clinic coordinator</small></span
+                          ></label
+                        ><label class="sample-clinic-option"
+                          ><input
+                            type="radio"
+                            name="clinic"
+                            value="north"
+                            required
+                            aria-describedby="clinic-error"
+                          /><span
+                            ><b>North Community Clinic</b
+                            ><small>Next owner: clinic coordinator</small></span
+                          ></label
+                        >
+                      </fieldset>
+                      <p
+                        id="clinic-error"
+                        class="sample-demo-error"
+                        data-referral-error
+                        aria-live="polite"
+                      ></p>
+                      <button type="submit" class="pill-button">
+                        Review handoff <span aria-hidden="true">→</span>
+                      </button>
+                    </form>
+                  </section>
+                  <section data-referral-step="review" hidden>
+                    <h4 tabindex="-1" data-step-heading>
+                      One last look at the handoff.
+                    </h4>
+                    <dl class="sample-demo-summary">
+                      <div>
+                        <dt>Record</dt>
+                        <dd>DEMO-014 · Synthetic referral</dd>
+                      </div>
+                      <div>
+                        <dt>Receiving clinic</dt>
+                        <dd data-referral-destination></dd>
+                      </div>
+                      <div>
+                        <dt>Next owner after delivery</dt>
+                        <dd>Clinic coordinator</dd>
+                      </div>
+                      <div>
+                        <dt>Connection</dt>
+                        <dd data-referral-review-status></dd>
+                      </div>
+                    </dl>
+                    <div class="sample-demo-actions">
+                      <button
+                        class="text-link"
+                        type="button"
+                        data-referral-action="back"
+                      >
+                        ← Back</button
+                      ><button
+                        class="pill-button"
+                        type="button"
+                        data-referral-action="confirm"
+                      >
+                        Confirm handoff <span aria-hidden="true">→</span>
+                      </button>
+                    </div>
+                  </section>
+                  <section data-referral-step="confirm" hidden>
+                    <span class="sample-result-mark" aria-hidden="true">↗</span>
+                    <h4
+                      tabindex="-1"
+                      data-step-heading
+                      data-referral-result
+                    ></h4>
+                    <p data-referral-result-copy></p>
+                    <p class="sample-demo-record">
+                      Destination: <span data-referral-destination></span>
+                    </p>
+                    <div class="sample-demo-actions">
+                      <button
+                        class="pill-button"
+                        type="button"
+                        data-referral-action="reconnect"
+                        hidden
+                      >
+                        Reconnect & send
+                        <span aria-hidden="true">→</span></button
+                      ><button
+                        class="text-link"
+                        type="button"
+                        data-referral-action="restart"
+                      >
+                        Restart simulation ↺
+                      </button>
+                    </div>
+                  </section>
+                </div>
+                <p class="sr-only" role="status" data-referral-announcement></p>
+              </div>
+              <p class="sample-demo-footnote">
+                Local demonstration only. No network requests or medical
+                recommendations. Reloading resets it.
+              </p>
+            </div>
+            <h3>03 / Find the work that belongs to you.</h3>
+            <p>
+              A focused queue pairs every delivery state with an owner and an
+              action. Labels carry meaning without depending on color.
+            </p>
+            <figure class="sample-product-stage">
+              <div class="sample-product" data-sample-depth>
+                <div class="sample-product-top">
+                  <b>Continuum<span> / field workspace</span></b
+                  ><span class="sample-status">SYNTHETIC RECORDS</span>
+                </div>
+                <div class="sample-product-title">
+                  <div>
+                    <span class="eyebrow">YOUR WORK</span>
+                    <h4>Keep the handoff moving.</h4>
+                  </div>
+                  <span>03 referrals</span>
+                </div>
+                <div
+                  class="sample-table-wrap"
+                  tabindex="0"
+                  role="region"
+                  aria-label="Fictional field-worker queue; scroll horizontally if needed"
+                >
+                  <table>
+                    <caption class="sr-only">
+                      Illustrative field-worker queue
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Record</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Next owner</th>
+                        <th scope="col">Next action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">DEMO-014</th>
+                        <td><span class="sample-status">Ready</span></td>
+                        <td>Field worker</td>
+                        <td>Review destination ↗</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">DEMO-022</th>
+                        <td>Queued offline</td>
+                        <td>Field worker</td>
+                        <td>Reconnect to send</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">DEMO-031</th>
+                        <td>Received</td>
+                        <td>Clinic coordinator</td>
+                        <td>Track follow-up</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <figcaption>
+                EDITABLE HTML INTERFACE / SAME STATUS MODEL, ROLE-SPECIFIC
+                ACTIONS
+              </figcaption>
+            </figure>
+          </section>
+          <section
+            class="case-chapter"
+            id="system-details"
+            data-case-section="10"
+            data-chapter-group="solution"
+            aria-labelledby="system-details-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >10 / SYSTEM DETAILS</span
+            >
+            <h2 id="system-details-title">
+              One state model.<br /><span class="muted"
+                >An explicit owner.</span
+              >
+            </h2>
+            <p>
+              Saved means a local draft. Queued means no handoff yet. Sent means
+              acknowledged delivery. Ownership stays with the field worker until
+              receipt; the supervisor can inspect states without changing it.
+            </p>
+            <figure class="sample-figure">
+              <a
+                class="media-link"
+                href="%BASE_URL%assets/continuum/states.svg"
+                data-gallery="continuum"
+                data-caption="Illustrative delivery states — Draft → Queued → Sent, with explicit ownership and no silent transfer."
+              >
+                <img
+                  src="%BASE_URL%assets/continuum/states.svg"
+                  width="1200"
+                  height="580"
+                  loading="lazy"
+                  alt="Draft and queued referrals remain with the field worker. Acknowledged delivery transfers the next action to the clinic coordinator."
+                />
+              </a>
+              <figcaption>
+                ILLUSTRATIVE STATE MODEL / THE DEMO SIMULATES DELIVERY IN MEMORY
+              </figcaption>
+            </figure>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / System details</summary>
+              <p>
+                Include the underlying model only when it explains an important
+                decision. For real work, show relevant permissions, errors,
+                offline recovery, accessibility, or reusable patterns—not a
+                decorative component inventory.
+              </p>
+            </details>
+            <details class="sample-deep">
+              <summary>Explore recovery, permissions, and edge cases</summary>
+              <div class="sample-deep-copy">
+                <p>
+                  The difficult cases sit between states: an interrupted
+                  acknowledgement, a retry after an uncertain response, a
+                  destination that becomes unavailable, or two people editing
+                  the same record. In a real implementation, the team would
+                  define retry limits, server reconciliation, audit history, and
+                  permission checks. A status label cannot substitute for those
+                  guarantees.
+                </p>
+                <p>
+                  The prototype is deliberately narrower. It demonstrates a
+                  required destination, reversible review, an offline queue, and
+                  one simulated delivery. Restart clears its memory. No durable
+                  storage or server behavior is claimed. The layout also
+                  preserves visible labels, keyboard controls, live
+                  confirmation, and text descriptions of every state.
+                </p>
+              </div>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="validation-iteration"
+            data-case-section="11"
+            data-chapter-group="solution"
+            aria-labelledby="validation-iteration-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >11 / VALIDATION + ITERATION</span
+            >
+            <h2 id="validation-iteration-title">
+              Validate the meaning.<br /><span class="muted"
+                >Refine the message.</span
+              >
+            </h2>
+            <div class="sample-validation">
+              <div>
+                <span>TESTED / FICTIONAL</span>
+                <p>Can the worker complete the handoff unassisted?</p>
+              </div>
+              <div>
+                <span>OBSERVED / FICTIONAL</span>
+                <p>4/8 complete it; “Saved” implies delivery.</p>
+              </div>
+              <div>
+                <span>CHANGED / CONCEPT</span>
+                <p>Name the destination, owner, and delivery state.</p>
+              </div>
+              <div>
+                <span>RETESTED / FICTIONAL</span>
+                <p>7/8 complete it; one still misreads a queued state.</p>
+              </div>
+            </div>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Validation and iteration</summary>
+              <p>
+                Connect an observed problem to an actual change and a subsequent
+                check. Identify the task and participant group. A prototype
+                result is not a production outcome, and a small retest does not
+                establish causation.
+              </p>
+            </details>
+            <details class="sample-deep">
+              <summary>Read the illustrative validation notes</summary>
+              <div class="sample-deep-copy">
+                <p>
+                  The comparison uses eight fictional participants and one
+                  defined task: select a destination, confirm the referral, and
+                  explain who acts next. Unassisted completion rises from four
+                  of eight to seven of eight in the invented retest. Median task
+                  time changes from 150 to 105 seconds. The arithmetic is a 30%
+                  reduction; the numbers are not empirical evidence.
+                </p>
+                <p>
+                  The remaining failure matters. One fictional participant still
+                  interprets a queued handoff as received. The next iteration
+                  would strengthen the distinction through the confirmation
+                  heading and the sender’s remaining action, then retest in
+                  realistic connectivity conditions. Adding another success icon
+                  would contradict that finding.
+                </p>
+                <p>
+                  A real study should document recruitment, facilitation, failed
+                  tasks, timing rules, and whether participants repeated the
+                  task. Familiarity, a small sample, or a changed testing
+                  environment could explain improvement. Production follow-up
+                  should examine delivery failures and completed referrals
+                  before claiming operational impact.
+                </p>
+              </div>
+            </details>
+          </section>
+          <section
+            class="case-chapter"
+            id="impact"
+            data-case-section="12"
+            data-chapter-group="impact"
+            aria-labelledby="impact-title"
+          >
+            <span class="eyebrow sample-section-label">12 / IMPACT</span>
+            <h2 id="impact-title">
+              A clearer handoff.<br /><span class="muted"
+                >An honest next question.</span
+              >
+            </h2>
+            <div class="sample-metrics">
+              <div>
+                <span>UNASSISTED COMPLETION</span
+                ><strong>4/8 <i aria-hidden="true">→</i> 7/8</strong>
+                <p>Fictional before / retest</p>
+              </div>
+              <div>
+                <span>MEDIAN TASK TIME</span
+                ><strong
+                  >150 <i aria-hidden="true">→</i> 105<span>s</span></strong
+                >
+                <p>Illustrative 30% reduction</p>
+              </div>
+            </div>
+            <p class="sample-evidence-label">
+              TEACHING EXAMPLES ONLY · NO MEASURED USER OR BUSINESS RESULTS
+            </p>
+            <dl class="sample-impact-types">
+              <div>
+                <dt>User</dt>
+                <dd>Intended benefit: know who acts next.</dd>
+              </div>
+              <div>
+                <dt>Product</dt>
+                <dd>Hypothesis: fewer unowned handoffs.</dd>
+              </div>
+              <div>
+                <dt>System</dt>
+                <dd>Concept: one delivery vocabulary across roles.</dd>
+              </div>
+            </dl>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Impact</summary>
+              <p>
+                Separate measured outcomes from intended benefits. Replace these
+                numbers with verified evidence and its limits, or use honest
+                qualitative results. Do not transfer a workflow-level
+                improvement to an entire product or population.
+              </p>
+            </details>
+            <blockquote class="sample-quote">
+              <p>
+                “The handoff makes responsibility visible without asking every
+                team to work in the same queue.”
+              </p>
+              <footer>
+                FICTIONAL TESTIMONIAL / SAMPLE PRODUCT MANAGER<br />Placeholder
+                wording, not a real endorsement.
+              </footer>
+            </blockquote>
+          </section>
+          <section
+            class="case-chapter"
+            id="reflection-next-bet"
+            data-case-section="13"
+            data-chapter-group="impact"
+            aria-labelledby="reflection-next-bet-title"
+          >
+            <span class="eyebrow sample-section-label"
+              >13 / REFLECTION + NEXT BET</span
+            >
+            <h2 id="reflection-next-bet-title">
+              What to preserve.<br /><span class="muted"
+                >What to question.</span
+              >
+            </h2>
+            <dl class="sample-reflection">
+              <div>
+                <dt>What worked in the concept</dt>
+                <dd>Responsibility follows a clear delivery state.</dd>
+              </div>
+              <div>
+                <dt>What I would change</dt>
+                <dd>Revisit the extra review step for repeat destinations.</dd>
+              </div>
+              <div>
+                <dt>What remains uncertain</dt>
+                <dd>The prototype cannot prove reliable delivery.</dd>
+              </div>
+              <div>
+                <dt>Next bet</dt>
+                <dd>
+                  Test interrupted acknowledgements under real field conditions.
+                </dd>
+              </div>
+            </dl>
+            <details class="sample-guide-note" data-guide-note>
+              <summary>Guide / Reflection and next bet</summary>
+              <p>
+                Explain what you would preserve, change, and investigate next. A
+                specific unresolved risk demonstrates better judgment than a
+                generic lesson about teamwork. Separate your reflection from an
+                outcome that has already happened.
+              </p>
+            </details>
+            <details class="sample-deep">
+              <summary>Explore the next validation bet</summary>
+              <div class="sample-deep-copy">
+                <p>
+                  The strongest part of this concept is the contract between
+                  state and ownership. Preserve that relationship while testing
+                  whether the review step earns its cost. If workers reliably
+                  choose the same clinic, a remembered destination might reduce
+                  effort without hiding accountability.
+                </p>
+                <p>
+                  The largest uncertainty is what happens after the device says
+                  “Sent.” A production pilot would need to trace acknowledged
+                  delivery, clinic acceptance, and follow-up separately.
+                  Improvements in prototype task time cannot establish
+                  improvements in access to care.
+                </p>
+                <p>
+                  The next useful bet is a bounded field trial of the handoff
+                  language and exception queue, with engineering defining
+                  recovery behavior before release. Keep the outcome open: if
+                  participants still mistake queued work for delivered work,
+                  change the interaction rather than explaining the existing
+                  design more forcefully.
+                </p>
+              </div>
+            </details>
+          </section>
+        </div>
+      </div>
+      <section
+        id="next-project"
+        data-case-section="14"
+        aria-labelledby="next-project-label next-project-title"
+      >
+        <div class="shell">
+          <details class="sample-guide-note" data-guide-note>
+            <summary>Guide / Next project</summary>
+            <p>
+              Offer a relevant next step using an existing project. This sample
+              links to CHIP-2 but is excluded from the real projects’ navigation
+              loop and featured-work count.
+            </p>
+          </details>
+        </div>
+        <a
+          class="next-project shell sample-next"
+          href="%BASE_URL%projects/chip-2/"
+          ><span class="eyebrow sample-section-label" id="next-project-label"
+            >14 / NEXT PROJECT</span
+          >
+          <div>
+            <h2 id="next-project-title">CHIP-2.</h2>
+            <b aria-hidden="true">↗</b>
+          </div>
+          <img
+            src="%BASE_URL%assets/chip-2-cover-600.webp"
+            width="600"
+            height="450"
+            alt="CHIP-2 workflow illustration"
+            loading="lazy"
+        /></a>
+      </section>
+    </main>
+    <!-- include:footer -->
+    <!-- include:dialogs -->
+  </body>
+</html>

@@ -1,27 +1,28 @@
 # Page map
 
-The site now contains 18 HTML pages: 17 content pages plus the 404 page.
+The site now contains 19 HTML pages: 17 existing content pages, one fictional sample case study, and the 404 page.
 
-| Page                                 | URL path                            | Content                                                                                                  |
-| ------------------------------------ | ----------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Home                                 | `/`                                 | Three featured projects, overview, about/services teasers, playground, collaboration/references, contact |
-| About                                | `/about/`                           | Six sections covering the person and their practice                                                      |
-| Contact me                           | `/contact/`                         | Direct contact details, four-field message builder, and FAQs                                             |
-| Résumé                               | `/resume/`                          | Career history, printable résumé, and updated two-page PDF download                                      |
-| Work                                 | `/work/`                            | Seven projects, category filters, and grid/list views                                                    |
-| CHIP-2                               | `/projects/chip-2/`                 | Multi-module public-health platform                                                                      |
-| Samasta                              | `/projects/samasta/`                | Primary healthcare application                                                                           |
-| CHO Soft                             | `/projects/cho-soft/`               | Facility mobile and dashboard workflows                                                                  |
-| AI-enabled dashboard                 | `/projects/ai-enabled/`             | Explainability and human-led review                                                                      |
-| ABDM–ABHA                            | `/projects/abdm-abha/`              | Health identity workflows                                                                                |
-| Anarock                              | `/projects/anarock/`                | Digital-product components and workflows                                                                 |
-| TARP Agile Platform                  | `/projects/tarp/`                   | Reusable component library and workflows                                                                 |
-| Playground                           | `/playground/`                      | Four interactive experiments                                                                             |
-| Blog / Field notes                   | `/blogs/`                           | Three authored design notes, search, and topic filters                                                   |
-| Make the next useful action obvious  | `/blogs/the-next-useful-action/`    | Product-thinking essay                                                                                   |
-| Motion should explain what changed   | `/blogs/motion-with-a-purpose/`     | Interaction-design essay                                                                                 |
-| A case study is a chain of decisions | `/blogs/show-the-design-decisions/` | Design-practice essay                                                                                    |
-| Not found                            | `/404.html`                         | Recovery navigation                                                                                      |
+| Page                                 | URL path                            | Content                                                                                                                                                                   |
+| ------------------------------------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Home                                 | `/`                                 | Nine-part brief: specialty hero, three projects, snapshot, philosophy, three experiments, testimonial placeholders, About teaser, contact, footer                         |
+| About                                | `/about/`                           | Seven sections in brief order: hero, story, experience, capabilities, Beyond Work, résumé, contact; unverified recognition omitted                                        |
+| Contact me                           | `/contact/`                         | Direct contact details, four-field message builder, and FAQs                                                                                                              |
+| Résumé                               | `/resume/`                          | Career history, printable résumé, and updated two-page PDF download                                                                                                       |
+| Work                                 | `/work/`                            | Five sections: intro, three featured employment projects, freelance previews, two additional summaries, two archive projects; employment filters                          |
+| CHIP-2                               | `/projects/chip-2/`                 | Multi-module public-health platform                                                                                                                                       |
+| Samasta                              | `/projects/samasta/`                | Primary healthcare application                                                                                                                                            |
+| CHO Soft                             | `/projects/cho-soft/`               | Facility mobile and dashboard workflows                                                                                                                                   |
+| AI-enabled dashboard                 | `/projects/ai-enabled/`             | Explainability and human-led review                                                                                                                                       |
+| ABDM–ABHA                            | `/projects/abdm-abha/`              | Health identity workflows                                                                                                                                                 |
+| Anarock                              | `/projects/anarock/`                | Digital-product components and workflows                                                                                                                                  |
+| TARP Agile Platform                  | `/projects/tarp/`                   | Reusable component library and workflows                                                                                                                                  |
+| Playground                           | `/playground/`                      | Three brief sections: introduction, visual grid, four experiment details with Idea / Experiment / Result and working controls                                             |
+| Blog / Field notes                   | `/blogs/`                           | Three authored design notes, search, and topic filters                                                                                                                    |
+| Make the next useful action obvious  | `/blogs/the-next-useful-action/`    | Product-thinking essay                                                                                                                                                    |
+| Motion should explain what changed   | `/blogs/motion-with-a-purpose/`     | Interaction-design essay                                                                                                                                                  |
+| A case study is a chain of decisions | `/blogs/show-the-design-decisions/` | Design-practice essay                                                                                                                                                     |
+| Continuum — fictional sample         | `/projects/sample-continuum/`       | Fourteen distinct sections, five navigation shortcuts, structure guide, referral demo; featured on Home as a fictional sample; excluded from real-work counts and sitemap |
+| Not found                            | `/404.html`                         | Recovery navigation                                                                                                                                                       |
 
 All page URLs are ordinary static paths. Vite adapts them to the configured GitHub Pages base path. Templates under `templates/` are editing starting points and are excluded from the public build.
 

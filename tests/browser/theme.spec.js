@@ -26,12 +26,7 @@ const routes = [
   ].map((slug) => `/blogs/${slug}/`),
   "/404.html",
 ];
-const skipLoader = (page) =>
-  page.addInitScript(() =>
-    localStorage.setItem("intent-portfolio-visits", "1"),
-  );
 const lightTheme = async (page) => {
-  await skipLoader(page);
   await page.addInitScript(() =>
     localStorage.setItem("intent-portfolio-theme", "light"),
   );
@@ -55,7 +50,6 @@ const audit = async (page) => {
 test("theme control sits beside motion, supports the keyboard, and preserves graphics", async ({
   page,
 }) => {
-  await skipLoader(page);
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await expect(page.locator(".sculpture.is-ready canvas")).toBeVisible();
@@ -94,7 +88,6 @@ test("theme survives navigation, reload, history, and synchronizes open tabs", a
   page,
   context,
 }) => {
-  await skipLoader(page);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/about/");
   await page.locator("[data-theme-toggle]").click();
@@ -104,7 +97,6 @@ test("theme survives navigation, reload, history, and synchronizes open tabs", a
   await page.goBack();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   const second = await context.newPage();
-  await skipLoader(second);
   await second.goto("/contact/");
   await expect(second.locator("html")).toHaveAttribute("data-theme", "light");
   await second.locator("[data-theme-toggle]").click();
@@ -116,33 +108,23 @@ test("theme survives navigation, reload, history, and synchronizes open tabs", a
   await second.close();
 });
 
-test("saved light palette reaches the loader before the app and retains the five-second hold", async ({
+test("saved light palette reaches the page before a failed app without blocking access", async ({
   page,
 }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem("intent-portfolio-theme", "light");
-    localStorage.setItem("intent-portfolio-visits", "0");
-  });
+  await page.addInitScript(() =>
+    localStorage.setItem("intent-portfolio-theme", "light"),
+  );
   await page.route(/\/assets\/main-[^/]+\.js$/, (route) => route.abort());
   await page.goto("/about/");
-  await expect(page.locator(".site-loader")).toBeVisible();
+  await expect(page.locator(".site-loader")).toHaveCount(0);
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
     "content",
     "#f2f0e9",
   );
-  await expect(page.locator(".loader-shutters span").first()).toHaveCSS(
-    "background-color",
-    "rgb(242, 240, 233)",
-  );
-  await expect(page.locator("#main")).toHaveJSProperty("inert", true);
-  await expect(page.locator(".site-loader")).toBeHidden();
-  expect(
-    await page.evaluate(
-      () => performance.now() - window.portfolioIntro.startedAt,
-    ),
-  ).toBeGreaterThanOrEqual(5000);
   await expect(page.locator("#main")).toHaveJSProperty("inert", false);
+  await page.locator(".static-menu > summary").click();
+  await expect(page.locator(".static-menu nav")).toBeVisible();
 });
 
 test("theme remains usable with unavailable storage and static pages work without JavaScript", async ({
@@ -169,7 +151,8 @@ test("theme remains usable with unavailable storage and static pages work withou
   });
   await staticPage.goto("http://127.0.0.1:4173/about/");
   await expect(staticPage.locator(".footer-preferences")).toBeHidden();
-  await expect(staticPage.locator(".desktop-nav")).toBeVisible();
+  await staticPage.locator(".static-menu > summary").click();
+  await expect(staticPage.locator(".static-menu nav")).toBeVisible();
   await expect(staticPage.locator("h1")).toBeVisible();
   await staticPage.close();
 });
@@ -182,6 +165,7 @@ test("light theme fits narrow, tablet and wide screens with adjacent footer cont
     await page.setViewportSize({ width, height: 950 });
     for (const route of [
       "/",
+      "/about/",
       "/contact/",
       "/playground/",
       "/projects/ai-enabled/",

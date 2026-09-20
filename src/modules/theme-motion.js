@@ -29,15 +29,13 @@ export function createThemeMotion() {
     state.commit();
     cleanup(state);
   };
-  const canAnimate = () =>
-    root.dataset.motion === "full" &&
-    !document.hidden &&
-    !window.portfolioIntro?.active;
+  const canAnimate = () => root.dataset.motion === "full" && !document.hidden;
 
   const run = (commit, button) => {
     if (active) {
+      // Settle on this request even when its callback differs from the last one.
+      active.commit = commit;
       cancel();
-      commit();
       return;
     }
     if (!canAnimate()) {
@@ -47,6 +45,7 @@ export function createThemeMotion() {
 
     const state = { commit, transition: null, timer: null };
     active = state;
+    const { innerWidth, innerHeight } = window;
     const duration =
       (innerWidth < 768 ? motion.themeRevealMobile : motion.themeReveal) * 1000;
     const box = button.getBoundingClientRect();
@@ -67,7 +66,7 @@ export function createThemeMotion() {
       root.dataset.themeTransition = "fade";
       root.style.setProperty("--theme-duration", `${motion.themeFade}s`);
       // Establish transitions on the current palette before changing its values.
-      void getComputedStyle(root).backgroundColor;
+      void window.getComputedStyle(root).backgroundColor;
       commit();
       state.timer = setTimeout(
         () => cleanup(state),
@@ -76,8 +75,11 @@ export function createThemeMotion() {
     };
     if (
       typeof document.startViewTransition !== "function" ||
-      typeof CSS.registerProperty !== "function" ||
-      !CSS.supports("mask-image", "radial-gradient(black, transparent)")
+      typeof window.CSS?.registerProperty !== "function" ||
+      !window.CSS?.supports?.(
+        "mask-image",
+        "radial-gradient(black, transparent)",
+      )
     ) {
       fade();
       return;

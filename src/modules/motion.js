@@ -5,9 +5,11 @@ gsap.registerPlugin(ScrollTrigger);
 export function initMotion(getMode) {
   let context;
   let revealObserver;
+  let media;
   const revealed = new WeakSet();
   function setup() {
     revealObserver?.disconnect();
+    media?.revert();
     context?.revert();
     if (getMode() === "reduced") return;
     context = gsap.context(() => {
@@ -16,32 +18,44 @@ export function initMotion(getMode) {
           ".section-heading h2, .about-grid h2, .case-chapter>h2, .experiment-heading, [data-reveal], .editorial-heading h2, .page-cta h2",
         )
         .forEach((element) => {
+          if (revealed.has(element)) return;
           gsap.from(element, {
             y: 38,
             opacity: 0,
             duration: motion.reveal,
             ease: motion.ease,
+            clearProps: "transform,opacity",
+            onStart: () => revealed.add(element),
             scrollTrigger: { trigger: element, start: "top 94%", once: true },
           });
         });
       document.querySelectorAll(".project-card").forEach((card) => {
+        if (revealed.has(card)) return;
         gsap
           .timeline({
             defaults: { duration: motion.reveal, ease: motion.ease },
+            onStart: () => revealed.add(card),
             scrollTrigger: { trigger: card, start: "top 94%", once: true },
           })
           .from(card.querySelector(".project-image"), {
             clipPath: "inset(12% 0 12% 0)",
             y: 28,
             opacity: 0,
+            clearProps: "transform,opacity,clipPath",
           })
           .from(
             card.querySelectorAll(".project-meta > *"),
-            { y: 18, opacity: 0, stagger: 0.09 },
+            {
+              y: 18,
+              opacity: 0,
+              stagger: 0.09,
+              clearProps: "transform,opacity",
+            },
             "-=0.5",
           );
       });
       document.querySelectorAll(".assembly").forEach((assembly) => {
+        if (revealed.has(assembly)) return;
         gsap.from(assembly.querySelectorAll(".assembly-layer"), {
           y: 90,
           opacity: 0,
@@ -49,10 +63,12 @@ export function initMotion(getMode) {
           duration: motion.assembly,
           stagger: 0.16,
           ease: motion.ease,
+          clearProps: "transform,opacity",
+          onStart: () => revealed.add(assembly),
           scrollTrigger: { trigger: assembly, start: "top 82%", once: true },
         });
       });
-      const media = gsap.matchMedia();
+      media = gsap.matchMedia();
       media.add("(min-width: 1024px) and (pointer: fine)", () => {
         document
           .querySelectorAll(
@@ -127,7 +143,7 @@ export function initMotion(getMode) {
   // Native scrolling with an inexpensive, once-per-frame progress update.
   const progress = document.querySelector(".site-scroll-progress > span");
   // Articles already have their own progress indicator for the reading body.
-  if (document.querySelector("[data-reading-progress]"))
+  if (progress && document.querySelector("[data-reading-progress]"))
     progress.parentElement.hidden = true;
   let scrollFrame = 0;
   const updateProgress = () => {
@@ -208,5 +224,16 @@ export function initMotion(getMode) {
   });
   document.addEventListener("portfolio:motion", () => {
     if (getMode() === "reduced") resetSignature();
+  });
+  window.addEventListener("pagehide", () => {
+    resetSignature();
+    revealObserver?.disconnect();
+    media?.revert();
+    context?.revert();
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) setup();
   });
 }

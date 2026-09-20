@@ -7,8 +7,11 @@ function walk(dir = "dist", prefix = "") {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     if (entry.isDirectory() && entry.name !== "assets")
       walk(`${dir}/${entry.name}`, `${prefix}${entry.name}/`);
-    else if (entry.name === "index.html")
-      pages.push(`${origin}${base}${prefix}`);
+    else if (entry.name === "index.html") {
+      const html = readFileSync(`${dir}/${entry.name}`, "utf8");
+      if (!html.includes('data-sample-case="continuum"'))
+        pages.push(`${origin}${base}${prefix}`);
+    }
   }
 }
 walk();

@@ -6,17 +6,11 @@ export function initCollections(getMode) {
   document.querySelectorAll("[data-collection]").forEach((collection) => {
     const items = [...collection.querySelectorAll("[data-collection-item]")];
     const filters = [...collection.querySelectorAll("[data-filter]")];
+    const groups = [...collection.querySelectorAll("[data-collection-group]")];
     const grid = collection.querySelector("[data-collection-grid]");
     const search = collection.querySelector("[data-search]");
-    const params = new URLSearchParams(location.search);
-    let category = filters.some((b) => b.dataset.filter === params.get("topic"))
-      ? params.get("topic")
-      : "all";
-    let view =
-      params.get("view") === "list" && collection.querySelector("[data-view]")
-        ? "list"
-        : "grid";
-    if (search) search.value = params.get("q") || "";
+    let category = "all";
+    let view = "grid";
     function apply(animate = true, updateUrl = true) {
       Flip.killFlipsOf(items);
       const state =
@@ -36,15 +30,20 @@ export function initCollections(getMode) {
           !item.dataset.title.toLowerCase().includes(query);
       });
       const visible = items.filter((item) => !item.hidden);
+      // Only employment groups participate. Freelance previews are ordinary
+      // content and remain outside project totals and category filtering.
+      groups.forEach((group) => {
+        group.hidden = !visible.some((item) => group.contains(item));
+      });
       grid.classList.toggle("is-list", view === "list");
-      collection
-        .querySelectorAll("[data-view]")
-        .forEach((button) =>
-          button.setAttribute(
-            "aria-pressed",
-            String(button.dataset.view === view),
-          ),
+      const hasGridItems = visible.some((item) => grid.contains(item));
+      collection.querySelectorAll("[data-view]").forEach((button) => {
+        button.disabled = !hasGridItems;
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.view === view),
         );
+      });
       const noun = collection.dataset.itemLabel || "projects";
       collection.querySelector("[data-collection-count]").textContent =
         `Showing ${visible.length} of ${items.length} ${noun}`;
@@ -56,6 +55,7 @@ export function initCollections(getMode) {
           ease: motion.ease,
           absolute: true,
           prune: true,
+          onComplete: () => window.dispatchEvent(new Event("resize")),
         });
       if (updateUrl) {
         const url = new URL(location.href);
@@ -93,12 +93,31 @@ export function initCollections(getMode) {
         apply();
         search?.focus();
       });
-    document.addEventListener("portfolio:motion", () => {
+    const settle = () => {
       Flip.killFlipsOf(items);
       gsap.set(items, {
         clearProps: "transform,position,top,left,width,height",
       });
+    };
+    const restore = () => {
+      settle();
+      const params = new URLSearchParams(location.search);
+      category = filters.some((b) => b.dataset.filter === params.get("topic"))
+        ? params.get("topic")
+        : "all";
+      view =
+        params.get("view") === "list" && collection.querySelector("[data-view]")
+          ? "list"
+          : "grid";
+      if (search) search.value = params.get("q") || "";
+      apply(false, false);
+    };
+    document.addEventListener("portfolio:motion", settle);
+    window.addEventListener("pagehide", settle);
+    window.addEventListener("popstate", restore);
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) restore();
     });
-    apply(false, false);
+    restore();
   });
 }

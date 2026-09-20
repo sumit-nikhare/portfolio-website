@@ -28,7 +28,10 @@ export function initDemo() {
     back.hidden = step === 0 || step === 2;
     root.querySelector("[data-demo-summary]").textContent =
       `Your focus: ${preference || "A fresh start"}`;
-    if (focus) panels[step].querySelector("h3").focus({ preventScroll: true });
+    if (focus)
+      panels[step]
+        .querySelector("[data-demo-heading]")
+        .focus({ preventScroll: true });
   }
   root.querySelectorAll('input[name="focus"]').forEach((input) =>
     input.addEventListener("change", () => {

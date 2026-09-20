@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve, relative } from "node:path";
 import settings from "./site.config.json";
-import { motion } from "./src/config.js";
 
 export function discoverPages(dir = ".", result = {}) {
   for (const item of readdirSync(dir, { withFileTypes: true })) {
@@ -43,11 +42,11 @@ export default defineConfig({
           // With scripting disabled, the ordinary expanded navigation remains visible.
           html = html.replace(
             "</head>",
-            `<script>${readFileSync(resolve("src/boot.js"), "utf8").replace("__PORTFOLIO_LOADER__", JSON.stringify({ duration: motion.loaderDuration * 1000, every: motion.loaderEvery }))}</script></head>`,
+            `<script>${readFileSync(resolve("src/boot.js"), "utf8")}</script></head>`,
           );
           html = html.replace(
             /(<body[^>]*>)/,
-            `$1${readFileSync(resolve("src/partials/loader.html"), "utf8")}`,
+            `$1${readFileSync(resolve("src/partials/scroll-progress.html"), "utf8")}`,
           );
           html = html.replace(/<!-- include:([a-z-]+) -->/g, (_, name) =>
             readFileSync(resolve("src/partials", `${name}.html`), "utf8"),

@@ -118,9 +118,6 @@
 [data-theme="light"] .text-link {
   border-color: var(--control-line);
 }
-[data-theme="light"] .loader-shutters span {
-  border-color: var(--line);
-}
 [data-theme="light"] .sculpture-fallback img {
   border-color: #78826450;
   box-shadow: 0 24px 40px #25301525;
@@ -144,7 +141,7 @@
   border-color: #93ae51;
   color: #20251b;
 }
-[data-theme="light"] .pill-button:hover {
+[data-theme="light"] .pill-button:is(:hover, :focus-visible) {
   background: #20251b;
   border-color: #20251b;
   color: #f2f0e9;
@@ -154,7 +151,7 @@
   border-color: var(--control-line);
   color: var(--paper);
 }
-[data-theme="light"] .pill-button.secondary:hover {
+[data-theme="light"] .pill-button.secondary:is(:hover, :focus-visible) {
   background: var(--paper);
   color: var(--ink);
 }
@@ -174,7 +171,7 @@
   background: #f2f0e9;
   color: #20251b;
 }
-[data-theme="light"] .project-image:hover .project-view {
+[data-theme="light"] .project-image:is(:hover, :focus-visible) .project-view {
   background: #d2ff5a;
 }
 

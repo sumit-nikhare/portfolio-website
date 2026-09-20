@@ -7,20 +7,20 @@ export function initPlayground(getMode) {
   if (output) {
     document
       .querySelector("[data-type-text]")
-      .addEventListener(
+      ?.addEventListener(
         "input",
         (event) => (output.textContent = event.target.value || "What if?"),
       );
     document
       .querySelector("[data-type-weight]")
-      .addEventListener("input", (event) => {
+      ?.addEventListener("input", (event) => {
         output.style.fontWeight = event.target.value;
         document.querySelector("[data-weight-value]").textContent =
           event.target.value;
       });
     document
       .querySelector("[data-type-tracking]")
-      .addEventListener("input", (event) => {
+      ?.addEventListener("input", (event) => {
         output.style.letterSpacing = `${event.target.value}em`;
         document.querySelector("[data-tracking-value]").textContent =
           `${event.target.value}em`;
@@ -37,6 +37,7 @@ export function initPlayground(getMode) {
       });
     const density = document.querySelector("[data-density]");
     density.addEventListener("change", () => {
+      Flip.killFlipsOf(card);
       const state = Flip.getState(card);
       card.style.padding = density.checked ? "36px" : "25px";
       if (getMode() === "full")
@@ -54,9 +55,27 @@ export function initPlayground(getMode) {
         gsap.fromTo(
           save,
           { scale: 0.97 },
-          { scale: 1, duration: motion.press, ease: "back.out(2)" },
+          {
+            scale: 1,
+            duration: motion.press,
+            ease: "back.out(2)",
+            overwrite: true,
+            clearProps: "transform",
+          },
         );
     });
+    const settle = () => {
+      Flip.killFlipsOf(card);
+      gsap.killTweensOf(save);
+      gsap.set(save, { clearProps: "transform" });
+      gsap.set(card, {
+        clearProps: "transform,position,top,left,width,height",
+      });
+    };
+    document.addEventListener("portfolio:motion", () => {
+      if (getMode() === "reduced") settle();
+    });
+    window.addEventListener("pagehide", settle);
   }
   const path = document.querySelector("[data-svg-path]");
   if (path) {
@@ -89,6 +108,15 @@ export function initPlayground(getMode) {
           onComplete: () => (pause.disabled = true),
         });
     }
+    function complete() {
+      tween?.kill();
+      tween = null;
+      state.progress = 1;
+      update();
+      pause.textContent = "Pause";
+      pause.setAttribute("aria-pressed", "false");
+      pause.disabled = true;
+    }
     replay.addEventListener("click", play);
     pause.addEventListener("click", () => {
       if (!tween) return;
@@ -96,7 +124,9 @@ export function initPlayground(getMode) {
       pause.textContent = tween.paused() ? "Resume" : "Pause";
       pause.setAttribute("aria-pressed", String(tween.paused()));
     });
-    document.addEventListener("portfolio:motion", play);
+    // Changing a site preference is not a request to replay the experiment.
+    document.addEventListener("portfolio:motion", complete);
+    window.addEventListener("pagehide", complete);
     document.addEventListener("visibilitychange", () => {
       if (document.hidden && tween?.isActive()) {
         tween.pause();
@@ -104,7 +134,6 @@ export function initPlayground(getMode) {
         pause.setAttribute("aria-pressed", "true");
       }
     });
-    state.progress = 1;
-    update();
+    complete();
   }
 }
